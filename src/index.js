@@ -1,1 +1,1 @@
-import './js/fetchAPI';
+import { getTrendingMovies } from './js/getTrendingMovies';
