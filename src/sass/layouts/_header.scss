@@ -9,7 +9,7 @@
     );
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   @media (-webkit-min-device-pixel-ratio: 2),
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
@@ -60,13 +60,83 @@
 }
   }
 }
+.header_library {
+  padding-top: 40px;
+  padding-bottom: 62px;
+  color: #ffffff;
+  text-align: center;
+  background-image:url('/src/images/lib_bg_header_mob.jpg'), linear-gradient(
+     rgba(0, 0, 0, 0.56),
+     rgba(0, 0, 0, 0.56)
+    );
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  @media (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+    background-image:
+      url('/src/images/lib_bg_header_mob@2x.jpg'), linear-gradient(
+        rgba(0, 0, 0, 0.56),
+     rgba(0, 0, 0, 0.56)
+      );
+}
+}
 
+@media screen and (min-width: 768px) {
+  .header_library {
+     padding-bottom: 60px;
+    background-image:
+      url('/src/images/lib_bg_header_tab.jpg'), linear-gradient(
+        rgba(0, 0, 0, 0.56),
+     rgba(0, 0, 0, 0.56)
+      );
+     @media (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+   background-image:
+      url('/src/images/lib_bg_header_tab@2x.jpg'), linear-gradient(
+        rgba(0, 0, 0, 0.56),
+     rgba(0, 0, 0, 0.56)
+      );
+} 
+  }
+}
+
+
+@media screen and (min-width: 1280px) {
+  .header_library{
+    background-image:
+      url('/src/images/lib_bg_header_des.jpg'), linear-gradient(
+        rgba(0, 0, 0, 0.56),
+     rgba(0, 0, 0, 0.56)
+      );
+      @media (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+   background-image:
+      url('/src/images/lib_bg_header_des@2x.jpg'), linear-gradient(
+        rgba(0, 0, 0, 0.56),
+     rgba(0, 0, 0, 0.56)
+      );
+}
+  }
+}
 .header__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 54px;
    @media  screen and  (min-width: 768px){
+        margin-bottom: 40px;
+    }
+}
+.header_library .header__container {
+  margin-bottom: 60px;
+  @media  screen and  (min-width: 768px){
+        margin-bottom: 46px;
+    }
+    @media  screen and  (min-width: 1280px){
         margin-bottom: 40px;
     }
 }
