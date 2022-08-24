@@ -20,30 +20,61 @@
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
-    <header>
-      <ul>
-        <li>
-          <a href="./index.html">Home</a>
-        </li>
-        <li>
-          <a href="./library.html">My library</a>
-        </li>
-      </ul>
-
-      <div>
-        <button id="popular" type="button">popular</button>
-      </div>
-      <div>
-        <button id="search" type="button">search</button>
-      </div>
-      <div>
-        <button id="by-id" type="button">by-id</button>
+    <header class="header">
+      <div class="container">
+        <div class="header__container">
+          <div class="website-title_wrapper">
+            <a class="logo" href="./index.html">
+              <svg class="logo__icon" width="24" height="24">
+                <use href="./images/icons.svg#icon-logo"></use></svg
+            ></a>
+            <h1 class="main-title">Filmoteka</h1>
+          </div>
+          <nav class="navigation">
+            <ul class="list navigation__wrapper">
+              <li class="navigation__item">
+                <a href="./index.html" class="navigation__link link current"
+                  >Home</a
+                >
+              </li>
+              <li class="navigation__item">
+                <a href="./library.html" class="navigation__link link"
+                  >My library</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="search__wrapper">
+          <input
+            class="search__input"
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Movie search"
+          />
+          <svg class="search__icon" width="12" height="12">
+            <use href="./images/icons.svg#icon-search"></use>
+          </svg>
+        </div>
       </div>
     </header>
     <main>
-      <div></div>
+      <div class="container">
+        <div>
+          <button id="popular" type="button">popular</button>
+        </div>
+        <div>
+          <button id="search" type="button">search</button>
+        </div>
+        <div>
+          <button id="by-id" type="button">by-id</button>
+        </div>
+      </div>
     </main>
-    <footer></footer>
+    <footer class="footer">
+      <div class="container"></div>
+    </footer>
 
     <script type="module" src="./index.js"></script>
   </body>
