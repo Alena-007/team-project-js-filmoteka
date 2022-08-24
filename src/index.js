@@ -3,7 +3,7 @@ import { getSearchMovies } from './js/getFetch';
 import { getMovieById } from './js/getFetch';
 
 const popularBtn = document.querySelector('#popular');
-const searchBtn = document.querySelector('#search');
+const searchBtn = document.querySelector('#search-btn');
 const movieByIdBtn = document.querySelector('#by-id');
 
 popularBtn.addEventListener('click', onPopular);
