@@ -29,36 +29,16 @@
           <a href="./library.html">My library</a>
         </li>
       </ul>
-      <form class="search-form" id="search-form">
-        <input
-          class="search-input"
-          type="text"
-          name="searchQuery"
-          autocomplete="off"
-          placeholder="export { getImages };
 
-const API_KEY = '29175615-30f269a9a3b7d578ba66f288c';
-
-async function getImages(request, page, perPage) {
-  try {
-    const URL = `https://pixabay.com/api/?key=${API_KEY}&q=${request}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${perPage}`;
-    const response = await axios.get(URL);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-} search..."
-        />
-        <button class="search-btn" type="submit">
-          <img
-            width="30px"
-            height="30px"
-            class="search-form-icon"
-            src="/src/images/icon-search.png"
-            alt="search"
-          />
-        </button>
-      </form>
+      <div>
+        <button id="popular" type="button">popular</button>
+      </div>
+      <div>
+        <button id="search" type="button">search</button>
+      </div>
+      <div>
+        <button id="by-id" type="button">by-id</button>
+      </div>
     </header>
     <main>
       <div></div>
