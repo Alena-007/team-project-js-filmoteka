@@ -1,0 +1,33 @@
+.footer {
+    background-color: #f7f7f7;
+    padding: 29px 0;
+}
+.footer__description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+font-size: 14px;
+line-height: 1.14;
+color: #545454;
+text-align: center;
+@media screen and (min-width: 768px) {
+    flex-direction: row;
+    font-size: 16px;
+line-height: 1.18;
+    
+}
+}
+.developers {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding-left: 3px;
+    @media screen and (max-width: 767px) {
+margin-top: 10px; 
+}
+}
+.developers_link {
+    color: #545454;
+    text-decoration: underline;
+}
