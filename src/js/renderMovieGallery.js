@@ -1,7 +1,8 @@
-export { renderMovieGallery };
+// import { movieGallery } from '../index';
+const movieGallery = document.querySelector('.gallery');
 
-const renderMovieGallery = async data => {
-  const result = data?.results
+export const renderMovieGallery = filmsArray => {
+  const result = filmsArray
     .map(
       ({
         poster_path,
