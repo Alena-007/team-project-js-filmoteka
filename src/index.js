@@ -1,16 +1,17 @@
 import { getPopularMovies } from './js/getFetch';
 import { getSearchMovies } from './js/getFetch';
 import { getMovieById } from './js/getFetch';
-import { renderMovieGallery } from './js/renderMovieGallery';
+import { showPopularMovieGallery } from './js/showPopularMovieGallery';
 
 const popularBtn = document.querySelector('#popular');
 const searchBtn = document.querySelector('#search-btn');
 const movieByIdBtn = document.querySelector('#by-id');
-const movieGallery = document.querySelector('gallery');
 
 popularBtn.addEventListener('click', onPopular);
 searchBtn.addEventListener('click', onSearch);
 movieByIdBtn.addEventListener('click', onMovieById);
+
+showPopularMovieGallery();
 
 async function onPopular() {
   const data = await getPopularMovies(1);
