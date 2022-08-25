@@ -1,0 +1,70 @@
+@media screen and (max-width: 767.98px) {
+    .gallery__card {
+        display: flex;
+        flex-direction: column;
+        width: 280px;
+        height: 443px;
+        margin-top: 20px;
+    }
+
+    .gallery__item-info {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .gallery__item-title {
+        text-transform: uppercase;
+        font-family: var(--primary-font-family);
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        color: var(--primary-text-color);
+    }
+
+    .gallery__item-text {
+        font-family: var(--primary-font-family);
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        color: var(--accent-color);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .gallery__card {
+        display: flex;
+        flex-direction: column;
+        width: 336px;
+        height: 494px;
+        margin-top: 32px;
+    }
+
+    .gallery__item-info {
+        display: flex;
+        flex-direction: column;
+        margin-top: 8px;
+    }
+
+    .gallery__item-title {
+        text-transform: uppercase;
+        font-family: var(--primary-font-family);
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        color: var(--primary-text-color);
+    }
+
+    .gallery__item-text {
+        font-family: var(--primary-font-family);
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        color: var(--accent-color);
+    }
+}
+
