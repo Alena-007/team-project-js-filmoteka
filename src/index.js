@@ -1,6 +1,9 @@
 import { getPopularMovies } from './js/getFetch';
 import { getSearchMovies } from './js/getFetch';
 import { getMovieById } from './js/getFetch';
+import { onOpenModal } from './js/modal.js'
+import { onCloseModal } from './js/modal.js'
+
 
 const popularBtn = document.querySelector('#popular');
 const searchBtn = document.querySelector('#search-btn');
@@ -24,3 +27,4 @@ async function onMovieById() {
   const data = await getMovieById(555);
   console.log(data);
 }
+
