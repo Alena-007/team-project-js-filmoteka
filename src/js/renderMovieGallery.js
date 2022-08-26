@@ -1,5 +1,5 @@
 // import { movieGallery } from '../index';
-const movieGallery = document.querySelector('.gallery');
+export const movieGallery = document.querySelector('.gallery');
 
 export const renderMovieGallery = filmsArray => {
   const result = filmsArray
