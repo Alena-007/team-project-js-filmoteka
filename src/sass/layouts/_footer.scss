@@ -30,4 +30,24 @@ margin-top: 10px;
 .developers_link {
     color: #545454;
     text-decoration: underline;
+    transition: color 250ms var(--timing-fun);
+}
+.developers_link:hover, .developers_link:focus {
+    color: var(--accent-color);
+}
+.footer__icon {
+    fill: var(--accent-color);
+     animation-name: spin;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes spin {
+  0% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1.8);
+  }
 }
