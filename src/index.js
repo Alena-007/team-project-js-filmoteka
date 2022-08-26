@@ -2,7 +2,11 @@ import { getPopularMovies } from './js/getFetch';
 import { getSearchMovies } from './js/getFetch';
 import { getMovieById } from './js/getFetch';
 import { showPopularMovieGallery } from './js/showPopularMovieGallery';
-import { movieGallery} from './js/renderMovieGallery';
+import { movieGallery } from './js/renderMovieGallery';
+// import { onOpenModal } from './js/modal';
+// import { onCloseModal } from './js/modal';
+
+
 import Pagination from 'tui-pagination';
 import "tui-pagination/dist/tui-pagination.css";
 
