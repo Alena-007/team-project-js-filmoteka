@@ -1,10 +1,10 @@
 import { renderMovieGallery } from './renderMovieGallery';
 import { getPopularMovies } from './getFetch';
 
-export function showPopularMovieGallery() {
-  let page = 1;
+export function showPopularMovieGallery(numberPage) {
+  
 
-  getPopularMovies(page)
+  getPopularMovies(numberPage)
     .then(data => {
       const filmsArray = data.results;
       console.log(filmsArray);
