@@ -5,6 +5,7 @@ import { showPopularMovieGallery } from './js/showPopularMovieGallery';
 import { movieGallery } from './js/renderMovieGallery';
 // import { onOpenModal } from './js/modal';
 // import { onCloseModal } from './js/modal';
+import modal from './js/modal'
 
 import axios from 'axios';
 
