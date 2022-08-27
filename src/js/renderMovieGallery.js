@@ -12,9 +12,10 @@ export const renderMovieGallery = filmsArray => {
         original_title,
         genre_ids,
         release_date,
+        id
       }) => `<div class="gallery__card">
-        <a class="gallery__item link" href="">
-          <img class="gallery__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="" loading="lazy" />
+        <a class="gallery__item  link" href="" onclick="event.preventDefault()">
+          <img class="gallery__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="" loading="lazy" data-id=${id} />
           <div class="gallery__item-info">
             <p class="gallery__item-title">
               ${original_title}

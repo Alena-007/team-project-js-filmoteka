@@ -11,7 +11,7 @@ export function getPopularMovies(page) {
   );
 }
 
-export function getSearchMovies(query, page) {
+export async function getSearchMovies(query, page) {
   return fetch(
     `${SEARCH_URL}?api_key=${API_KEY}&query=${query}&page=${page}`
   ).then(respons => respons.json());

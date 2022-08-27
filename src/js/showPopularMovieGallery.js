@@ -9,6 +9,8 @@ export function showPopularMovieGallery(numberPage) {
       const filmsArray = data.results;
       console.log(filmsArray);
       renderMovieGallery(filmsArray);
+      // console.log(modalOpenLink)
     })
     .catch(error => console.log(error));
 }
+// import {modalOpenLink} from './modal'

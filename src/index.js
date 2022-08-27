@@ -5,6 +5,7 @@ import { showPopularMovieGallery } from './js/showPopularMovieGallery';
 import { movieGallery } from './js/renderMovieGallery';
 // import { onOpenModal } from './js/modal';
 // import { onCloseModal } from './js/modal';
+import modal from './js/modal'
 
 import axios from 'axios';
 
@@ -33,8 +34,9 @@ async function onSearch() {
 
 async function onMovieById() {
   const data = await getMovieById(555);
-  return data;
   console.log(data);
+  return data;
+  
 }
 function resetPopular() {
   movieGallery.innerHTML = '';
@@ -46,6 +48,7 @@ const pagination = new Pagination('tui-pagination-container', {
   page: 1,
   centerAlign: true,
 });
+
 
 pagination.on('afterMove', event => {
   resetPopular();
