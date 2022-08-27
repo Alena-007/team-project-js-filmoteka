@@ -2,7 +2,7 @@
 import { getMovieById } from './getFetch';
 
 const backdrop = document.querySelector(".backdrop")
-const modalBox = document.querySelector(".modal")
+const modalBox = document.querySelector(".modal-card")
 
 export const gallery = document.querySelector(".gallery")
 
@@ -47,7 +47,7 @@ function renderMovieModal(data) {
     // writeLogoProdCompany(data);
 
     const modalBackdrop = document.querySelector('.backdrop');
-    const closeButton = document.querySelector('[data-action="close-modal"]');
+    const closeButton = document.querySelector('.modal-close-button');
 
     modalBackdrop.addEventListener('click', modalClosing);
     closeButton.addEventListener('click', modalClosing);
@@ -63,6 +63,8 @@ function modalClosing() {
   backdrop.classList.remove('is-open');
   backdrop.classList.add('is-hidden')
   document.body.style.overflow = '';
+  modalBackdrop.removeEventListener('click', modalClosing);
+  closeButton.removeListener('click', modalClosing);
   window.removeEventListener('keydown', modalClosinByEsc);
 }
 function modalClosinByEsc(event) {

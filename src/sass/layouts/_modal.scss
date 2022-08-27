@@ -10,7 +10,6 @@
 }
 
 .is-hidden {
-  
   visibility: hidden;
   //   pointer-events: none;
 }
@@ -68,6 +67,13 @@
 
 .modal-card {
   display: flex;
+}
+
+.modal-card-poster {
+  width: 375px;
+  // width: 100%;
+  height: 478px;
+  border-radius: 10px;
 }
 
 .modal-movie-info-part {
@@ -199,9 +205,8 @@
   }
 
   .modal-card-poster {
-    /* width: 240px; */
-    width: 100%;
-
+    width: 240px;
+    // width: 100%;
     height: 357px;
     margin-bottom: 20px;
   }
