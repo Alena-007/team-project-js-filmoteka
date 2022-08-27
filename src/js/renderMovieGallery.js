@@ -1,6 +1,9 @@
 // import { movieGallery } from '../index';
 export const movieGallery = document.querySelector('.gallery');
 
+
+
+
 export const renderMovieGallery = filmsArray => {
   const result = filmsArray
     .map(

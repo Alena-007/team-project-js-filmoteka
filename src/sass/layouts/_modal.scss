@@ -4,14 +4,15 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-/* .is-hidden {
+.is-hidden {
   opacity: 0;
   visibility: hidden;
-  pointer-events: none;
-} */
+  //   pointer-events: none;
+}
 
 .modal {
   position: absolute;
@@ -21,7 +22,7 @@
   top: 150px;
   border-width: 2px;
   border-color: black;
-  font-family: "Roboto";
+  font-family: 'Roboto';
 
   background: #ffffff;
 
@@ -55,6 +56,7 @@
   width: 30px;
   height: 30px;
   color: #000;
+  fill: black;
   text-align: center;
   align-items: center;
 }
@@ -68,7 +70,7 @@
 }
 
 .modal-movie-title {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
