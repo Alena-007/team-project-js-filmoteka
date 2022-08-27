@@ -44,21 +44,22 @@ const pagination = new Pagination("tui-pagination-container", {
   totalItems: 0,
   itemsPerPage: 20,
   visiblePages: 5,
-  page: 1
+  page: 1,
+  centerAlign: true
 });
-pagination.reset(20000);
+
 pagination.on("afterMove", (event) => {
   resetPopular();
 showPopularMovieGallery(event.page);
-<<<<<<< Updated upstream
+
 });
-=======
-});
+
+
 
   getPopularMovies(1).then(data => {
     pagination.reset(data.total_results);
   })
     .catch(error => console.log(error));
+ });
 
- 
->>>>>>> Stashed changes
+
