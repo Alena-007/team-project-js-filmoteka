@@ -10,7 +10,7 @@ import modal from './js/modal'
 import axios from 'axios';
 
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
 
 const popularBtn = document.querySelector('#popular');
 const searchBtn = document.querySelector('#search-btn');
