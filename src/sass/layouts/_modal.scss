@@ -157,7 +157,7 @@
   display: flex;
 }
 
-.modal-button {
+.modal-button, .btn-watched, .btn-queue {
   width: 136px;
   height: 44px;
   font-size: 12px;
@@ -179,6 +179,7 @@
   background-color: #ff6b01;
   border-color: transparent;
   color: #ffffff;
+  cursor: pointer;
 }
 
 /* max 767px */
