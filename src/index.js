@@ -15,7 +15,7 @@ import axios from 'axios';
 import team from './js/team';
 import { openModalBtn } from './js/team';
 import { closeModalBtn } from './js/team';
-
+import { teamModal } from './js/team';
 const popularBtn = document.querySelector('#popular');
 const searchBtn = document.querySelector('#search-btn');
 const movieByIdBtn = document.querySelector('#by-id');
