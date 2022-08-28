@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Filmoteka</title>
+    <link rel="shortcut icon" href="./images/favicon.ico" type=”image/x-icon”/>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,7 +35,9 @@
           <nav class="navigation">
             <ul class="list navigation__wrapper">
               <li class="navigation__item">
-                <a href="./index.html" class="navigation__link link current"
+                <a
+                  href="./index.html"
+                  class="navigation__link link current home"
                   >Home</a
                 >
               </li>
@@ -62,16 +65,6 @@
     </header>
     <main>
       <div class="container">
-        <div>
-          <button id="popular" type="button">popular</button>
-        </div>
-        <div>
-          <button id="search-btn" type="button">search</button>
-        </div>
-        <div>
-          <button id="by-id" type="button">by-id</button>
-        </div>
-
         <div class="gallery"></div>
         <div id="tui-pagination-container" class="tui-pagination"></div>
         <div class="loader is-hidden loader--style3">
