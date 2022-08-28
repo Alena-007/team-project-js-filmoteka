@@ -10,7 +10,6 @@
 }
 
 .is-hidden {
-  
   visibility: hidden;
   //   pointer-events: none;
 }
@@ -60,14 +59,37 @@
 .modal-close-icon {
   width: 30px;
   height: 30px;
-  color: #000;
   fill: black;
   text-align: center;
   align-items: center;
 }
 
+.modal-close-icon:hover {
+  fill: #ff6b01;
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes spin {
+  0% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1.8);
+  }
+}
+
 .modal-card {
   display: flex;
+}
+
+.modal-card-poster {
+  width: 375px;
+  // width: 100%;
+  height: 478px;
+  border-radius: 10px;
 }
 
 .modal-movie-info-part {
@@ -157,7 +179,7 @@
   display: flex;
 }
 
-.modal-button {
+.modal-button, .btn-watched, .btn-queue {
   width: 136px;
   height: 44px;
   font-size: 12px;
@@ -179,6 +201,7 @@
   background-color: #ff6b01;
   border-color: transparent;
   color: #ffffff;
+  cursor: pointer;
 }
 
 /* max 767px */
@@ -199,9 +222,8 @@
   }
 
   .modal-card-poster {
-    /* width: 240px; */
-    width: 100%;
-
+    width: 240px;
+    // width: 100%;
     height: 357px;
     margin-bottom: 20px;
   }
