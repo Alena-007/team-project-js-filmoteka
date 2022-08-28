@@ -11,6 +11,9 @@ import axios from 'axios';
 import team from './js/team';
 import { openModalBtn } from './js/team';
 import { closeModalBtn } from './js/team';
+
+import { teamModal } from './js/team';
+
 const currentPage = document.querySelector('.current');
 
 if (currentPage.classList.contains('home')) {
