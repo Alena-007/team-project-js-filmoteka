@@ -2,7 +2,7 @@
 import { getMovieById } from './getFetch';
 
 const backdrop = document.querySelector(".backdrop")
-const modalBox = document.querySelector(".modal")
+const modalBox = document.querySelector(".modal-card")
 
 export const gallery = document.querySelector(".gallery")
 
@@ -47,7 +47,7 @@ function renderMovieModal(data) {
     // writeLogoProdCompany(data);
 
     const modalBackdrop = document.querySelector('.backdrop');
-    const closeButton = document.querySelector('[data-action="close-modal"]');
+    const closeButton = document.querySelector('.modal-close-button');
 
     modalBackdrop.addEventListener('click', modalClosing);
     closeButton.addEventListener('click', modalClosing);
@@ -63,6 +63,8 @@ function modalClosing() {
   backdrop.classList.remove('is-open');
   backdrop.classList.add('is-hidden')
   document.body.style.overflow = '';
+  modalBackdrop.removeEventListener('click', modalClosing);
+  closeButton.removeListener('click', modalClosing);
   window.removeEventListener('keydown', modalClosinByEsc);
 }
 function modalClosinByEsc(event) {
@@ -72,7 +74,12 @@ function modalClosinByEsc(event) {
 }
 
 //////
-function renderMovieInfo({ poster_path, title, vote_average, vote_count, popularity, original_title, genre_ids, overview, }) {
+function renderMovieInfo({ poster_path, title, vote_average, vote_count, popularity, original_title, genres, overview, }) {
+
+
+  const genreNames = genres.map(genre => genre.name)
+  let listGenreNames = genreNames.slice(0, 2).join(", ")
+
     return `<div class="modal-card">
             <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}poster" class="modal-card-poster" />
 
@@ -86,7 +93,7 @@ function renderMovieInfo({ poster_path, title, vote_average, vote_count, popular
                       Vote / Votes
                     </td>
                     <td class="modal-property-vote-value modal-property-value">
-                      <p class="modal-vote-value">${vote_average}</p>
+                      <p class="modal-vote-value">${Math.round(vote_average*10)/10}</p>
                       <span> &nbsp/&nbsp </span>
                       <p class="modal-votes-value">${vote_count}</p>
                     </td>
@@ -98,7 +105,7 @@ function renderMovieInfo({ poster_path, title, vote_average, vote_count, popular
                     <td
                       class="modal-property-popularity-value modal-property-value"
                     >
-                      ${popularity}
+                      ${Math.round(popularity *10)/10}
                     </td>
                   </tr>
                   <tr class="modal-property-item" height="16">
@@ -118,7 +125,7 @@ function renderMovieInfo({ poster_path, title, vote_average, vote_count, popular
                       Genre
                     </td>
                     <td class="modal-propery-genre-value modal-property-value">
-                      ${genre_ids}
+                      ${listGenreNames}, Others
                     </td>
                   </tr>
                 </tbody>

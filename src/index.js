@@ -2,7 +2,8 @@ import { getPopularMovies } from './js/getFetch';
 import { getSearchMovies } from './js/getFetch';
 import { getMovieById } from './js/getFetch';
 import { showPopularMovieGallery } from './js/showPopularMovieGallery';
-import { movieGallery } from './js/renderMovieGallery';
+import { movieGallery } from './js/renderMovieGallery'; 
+import {showRenderGallery} from './js/renderMovieGallery'
 // import { onOpenModal } from './js/modal';
 // import { onCloseModal } from './js/modal';
 import modal from './js/modal'
@@ -11,6 +12,9 @@ import axios from 'axios';
 
 import Pagination from 'tui-pagination';
 // import 'tui-pagination/dist/tui-pagination.css';
+import team from './js/team';
+import { openModalBtn } from './js/team';
+import { closeModalBtn } from './js/team';
 
 const popularBtn = document.querySelector('#popular');
 const searchBtn = document.querySelector('#search-btn');
@@ -21,6 +25,7 @@ searchBtn.addEventListener('click', onSearch);
 movieByIdBtn.addEventListener('click', onMovieById);
 
 showPopularMovieGallery(1);
+showRenderGallery(1)
 
 async function onPopular() {
   const data = await getPopularMovies(1);
@@ -40,6 +45,7 @@ async function onMovieById() {
 function resetPopular() {
   movieGallery.innerHTML = '';
 }
+
 const pagination = new Pagination('tui-pagination-container', {
   totalItems: 0,
   itemsPerPage: 20,
