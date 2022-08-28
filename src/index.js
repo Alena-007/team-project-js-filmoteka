@@ -11,6 +11,9 @@ import axios from 'axios';
 
 import Pagination from 'tui-pagination';
 // import 'tui-pagination/dist/tui-pagination.css';
+import team from './js/team';
+import { openModalBtn } from './js/team';
+import { closeModalBtn } from './js/team';
 
 const popularBtn = document.querySelector('#popular');
 const searchBtn = document.querySelector('#search-btn');
