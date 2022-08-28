@@ -7,14 +7,14 @@ const modalBox = document.querySelector(".modal-card")
 export const gallery = document.querySelector(".gallery")
 
 gallery.addEventListener('click', clickOnMovieHandler);
-
+let movieId = null;
 async function clickOnMovieHandler(e) {
   e.preventDefault();
 
   if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'H2') {
     return;
   }
-  let movieId = e.target.dataset.id;
+  movieId = e.target.dataset.id;
   console.log(movieId)
   
   await fetchById(movieId);
@@ -23,13 +23,13 @@ async function clickOnMovieHandler(e) {
 
 async function fetchById(id) {
   try {
-    const movieId = await getMovieById(id);
+   const movieId = await getMovieById(id);
 console.log(movieId)
     renderMovieModal(movieId);
-   
-    const btnQueue = document.querySelector('.modal-add-queue-button');
-    const btnWatch = document.querySelector('.modal-add-watched-button');
-
+   const btnQueue = document.querySelector('.modal-add-queue-button');
+     const btnWatch = document.querySelector('.modal-add-watched-button');
+     btnWatch.addEventListener('click', addToWatchedLoc);
+btnQueue.addEventListener('click', addToQueue);
   } catch (error) {
 
     console.error('error');
@@ -63,8 +63,8 @@ function modalClosing() {
   backdrop.classList.remove('is-open');
   backdrop.classList.add('is-hidden')
   document.body.style.overflow = '';
-  modalBackdrop.removeEventListener('click', modalClosing);
-  closeButton.removeListener('click', modalClosing);
+  // modalBackdrop.removeEventListener('click', modalClosing); //тут пробует достчатся к переменной, которой не видно
+  // closeButton.removeListener('click', modalClosing);
   window.removeEventListener('keydown', modalClosinByEsc);
 }
 function modalClosinByEsc(event) {
@@ -72,6 +72,21 @@ function modalClosinByEsc(event) {
     modalClosing();
   }
 }
+
+function addToWatchedLoc() {
+   
+    getMovieById(movieId).then(info => {
+        localStorage.setItem(`choiseMovieWatched ${movieId}`, JSON.stringify(info));
+        return movieId;
+    });
+}
+
+function addToQueue() {
+      getMovieById(movieId).then(info => {
+        localStorage.setItem(`choiseMovieQueue ${movieId}`, JSON.stringify(info));
+        return movieId;
+    });
+} 
 
 //////
 function renderMovieInfo({ poster_path, title, vote_average, vote_count, popularity, original_title, genres, overview, }) {
