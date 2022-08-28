@@ -74,7 +74,12 @@ function modalClosinByEsc(event) {
 }
 
 //////
-function renderMovieInfo({ poster_path, title, vote_average, vote_count, popularity, original_title, genre_ids, overview, }) {
+function renderMovieInfo({ poster_path, title, vote_average, vote_count, popularity, original_title, genres, overview, }) {
+
+
+  const genreNames = genres.map(genre => genre.name)
+  let listGenreNames = genreNames.slice(0, 2).join(", ")
+
     return `<div class="modal-card">
             <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}poster" class="modal-card-poster" />
 
@@ -88,7 +93,7 @@ function renderMovieInfo({ poster_path, title, vote_average, vote_count, popular
                       Vote / Votes
                     </td>
                     <td class="modal-property-vote-value modal-property-value">
-                      <p class="modal-vote-value">${vote_average}</p>
+                      <p class="modal-vote-value">${Math.round(vote_average*10)/10}</p>
                       <span> &nbsp/&nbsp </span>
                       <p class="modal-votes-value">${vote_count}</p>
                     </td>
@@ -100,7 +105,7 @@ function renderMovieInfo({ poster_path, title, vote_average, vote_count, popular
                     <td
                       class="modal-property-popularity-value modal-property-value"
                     >
-                      ${popularity}
+                      ${Math.round(popularity *10)/10}
                     </td>
                   </tr>
                   <tr class="modal-property-item" height="16">
@@ -120,7 +125,7 @@ function renderMovieInfo({ poster_path, title, vote_average, vote_count, popular
                       Genre
                     </td>
                     <td class="modal-propery-genre-value modal-property-value">
-                      ${genre_ids}
+                      ${listGenreNames}, Others
                     </td>
                   </tr>
                 </tbody>
