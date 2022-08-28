@@ -10,9 +10,10 @@ export const libraryMovieGallery = filmsArray => {
         genre_ids,
         release_date,
         vote_average,
+        id,
       }) => `<div class="gallery__card">
-        <a class="gallery__item link" href="">
-          <img class="gallery__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="" loading="lazy" />
+        <a class="gallery__item link" href="" onclick="event.preventDefault()>
+          <img class="gallery__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="" loading="lazy" data-id=${id} />
           <div class="gallery__item-data">
           <div class="gallery__item-info">
             <p class="gallery__item-title">

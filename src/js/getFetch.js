@@ -22,3 +22,9 @@ export function getMovieById(id) {
     respons.json()
   );
 }
+
+export function getGenres() {
+  return fetch(
+    `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
+  ).then(respons => respons.json());
+}
