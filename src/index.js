@@ -5,18 +5,16 @@ import { showPopularMovieGallery } from './js/showPopularMovieGallery';
 
 import { getPagination } from './js/pagination';
 
-import {showRenderGallery} from './js/renderMovieGallery'
+// import {showRenderGallery} from './js/renderMovieGallery'
 // import { onOpenModal } from './js/modal';
 // import { onCloseModal } from './js/modal';
-import modal from './js/modal'
+import modal from './js/modal';
 
 import axios from 'axios';
-
 
 import team from './js/team';
 import { openModalBtn } from './js/team';
 import { closeModalBtn } from './js/team';
-
 
 const popularBtn = document.querySelector('#popular');
 const searchBtn = document.querySelector('#search-btn');
@@ -30,7 +28,7 @@ showPopularMovieGallery(1);
 
 getPagination();
 
-showRenderGallery(1)
+// showRenderGallery(1)
 
 async function onPopular() {
   const data = await getPopularMovies(1);
@@ -46,4 +44,3 @@ async function onMovieById() {
   const data = await getMovieById(555);
   console.log(data);
 }
-
