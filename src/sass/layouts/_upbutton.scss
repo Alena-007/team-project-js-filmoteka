@@ -1,0 +1,50 @@
+.up-button-container {
+  position: fixed;
+  display: flex;
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  //   background-color: #ffffff;
+  background-color: #feefe4;
+  box-shadow: 12px 12px 12px #c4c1be;
+  bottom: 100px;
+  right: 40px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.up-button-container:hover,
+.up-button-container:hover {
+  //   animation: animate 8s linear infinite;
+  background: linear-gradient(320deg, #ff6b01 0%, #ffe4d0 100%);
+  box-shadow: 12px 12px 12px #fccaa6;
+  transition: all 0.3s ease-in-out 0s;
+  background-color: #ff6b01;
+}
+
+.up-button-icon {
+  width: 50px;
+  height: 50px;
+
+  fill: #ff6b01;
+}
+
+.up-button-icon:hover,
+.up-button-icon:active {
+  fill: #000000;
+}
+
+@media screen and (max-width: 767px) {
+  .up-button-container {
+    width: 50px;
+    height: 50px;
+    right: 30px;
+    bottom: 120px;
+  }
+  .up-button-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
