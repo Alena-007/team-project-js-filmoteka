@@ -1,89 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filmoteka</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
+      integrity="sha512-wpPYUAdjBVSE4KJnH1VR1HeZfpl1ub8YT/NKx4PuQ5NmX2tKuGu6U/JRp5y+Y8XG2tV+wKQpNHVUX03MfMFn9Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./sass/index.scss" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Filmoteka</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
-    integrity="sha512-wpPYUAdjBVSE4KJnH1VR1HeZfpl1ub8YT/NKx4PuQ5NmX2tKuGu6U/JRp5y+Y8XG2tV+wKQpNHVUX03MfMFn9Q=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="./sass/index.scss" />
-</head>
-
-<body>
-  <header class="header header_library">
-    <div class="container">
-      <div class="header__container">
-        <div class="website-title_wrapper">
+  <body>
+    <header class="header header_library">
+      <div class="container">
+        <div class="header__container">
           <a class="logo" href="./index.html">
             <svg class="logo__icon" width="24" height="24">
               <use href="./images/icons.svg#icon-logo"></use>
-            </svg></a>
-          <h1 class="main-title">Filmoteka</h1>
+            </svg>
+            <h1 class="main-title">Filmoteka</h1></a
+          >
+          <nav class="navigation">
+            <ul class="list navigation__wrapper">
+              <li class="navigation__item">
+                <a href="./index.html" class="navigation__link link home"
+                  >Home</a
+                >
+              </li>
+              <li class="navigation__item">
+                <a href="./library.html" class="navigation__link link current"
+                  >My library</a
+                >
+              </li>
+            </ul>
+          </nav>
         </div>
-        <nav class="navigation">
-          <ul class="list navigation__wrapper">
-            <li class="navigation__item">
-              <a href="./index.html" class="navigation__link link home">Home</a>
-            </li>
-            <li class="navigation__item">
-              <a href="./library.html" class="navigation__link link current">My library</a>
-            </li>
-          </ul>
-        </nav>
+        <button class="btn-watched current-btn_library" type="button">
+          WATCHED
+        </button>
+        <button class="btn-queue" type="button">QUEUE</button>
       </div>
-      <button class="btn-watched current-btn_library" type="button">
-        WATCHED
-      </button>
-      <button class="btn-queue" type="button">QUEUE</button>
-    </div>
-  </header>
-  <main>
-    <div class="container">
-      <div class="gallery__library-watched"></div>
-      <div class="gallery__library-queue visually-hidden"></div>
-      <div id="tui-pagination-container" class="tui-pagination"></div>
-      <div class="loader is-hidden loader--style3">
-        <div class="spiner">
-          <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px" y="0px" width="80px" height="80px" viewBox="0 0 50 50" style="enable-background: new 0 0 50 50"
-            xml:space="preserve">
-            <path fill="#FF6B08"
-              d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
-              <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25"
-                to="360 25 25" dur="0.6s" repeatCount="indefinite" />
-            </path>
-          </svg>
-          <br />
-          <span class="spiner_text">Please wait...</span>
-        </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="gallery__library-watched"></div>
+        <div class="gallery__library-queue visually-hidden"></div>
+        <include src="./partials/tui_loader.html"></include>
       </div>
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__description">
-        <p>&#169; 2022 | All Rights Reserved |</p>
-        <p class="developers">
-          <span>Developed with</span>
-          <svg class="footer__icon" width="14" height="13">
-            <use href="./images/icons.svg#icon-favorite"></use>
-          </svg>
-          <span>by
-            <a class="developers_link link" href="#" data-team-open>
-              GoIT Students</a></span>
-        </p>
-      </div>
-    </div>
-  </footer>
-  <include src="./partials/modal.html"></include>
-  <include src="./partials/team.html"></include>
-
-  <script type="module" src="./index.js"></script>
-</body>
-
+    </main>
+    <include src="./partials/footer.html"></include>
+    <include src="./partials/modal.html"></include>
+    <include src="./partials/team.html"></include>
+    <script type="module" src="./index.js"></script>
+  </body>
 </html>

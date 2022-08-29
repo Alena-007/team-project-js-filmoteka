@@ -124,6 +124,11 @@
 }
 
 .logo {
+   display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #ffffff;
   height: 24px;
   transition: transform 250ms var(--timing-fun);
 }
@@ -133,12 +138,6 @@
 }
 .logo__icon {
   fill: currentColor;
-}
-
-.website-title_wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 .main-title {
@@ -188,13 +187,29 @@
 }
 
 .search__wrapper {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
 
+}
+
+.search__input {
+  background-color: transparent;
+  padding: 4px 0;
+  font-size: 16px;
+  border: 0.5px solid;
+  border-color: transparent transparent #ffffff transparent;
+  box-sizing: border-box;
+  color: #ffffff;
+  transition: border-color 250ms var(--timing-fun);
+  @media screen and (max-width: 319px) {
+    width: 87vw;
+  }
+  @media screen and (min-width: 320px) {
+    width: 280px;
+  }
   @media screen and (min-width: 768px) {
     width: 336px;
   }
@@ -203,17 +218,8 @@
     width: 394px;
   }
 }
-
-.search__input {
-  background-color: transparent;
-  padding: 4px 0;
-  width: 26vw;
-  font-size: 16px;
-  border: 0.5px solid;
-  border-color: transparent transparent #ffffff transparent;
-  box-sizing: border-box;
-  color: #ffffff;
-  transition: border-color 250ms var(--timing-fun);
+.search-form {
+  position: relative;
 }
 .search__input::placeholder {
   color: #ffffff;
@@ -225,10 +231,16 @@
   outline: none;
   border-color: transparent transparent #ff001b transparent;
 }
-.search__icon {
-  position: absolute;
+.search-btn {
+   position: absolute;
   right: 0;
-  bottom: 20px;
+  bottom: 6px;
+  cursor: pointer;
+  background-color: transparent;
+  border: transparent;
+}
+
+.search__icon {
   color: #ffffff;
   transition: fill 250ms var(--timing-fun);
 }
@@ -267,10 +279,4 @@
 .header_library .current-btn_library {
   background-color: var(--accent-color);
   border-color: transparent;
-}
-
-.search-btn {
-  cursor: pointer;
-  background-color: transparent;
-  border: transparent;
 }
