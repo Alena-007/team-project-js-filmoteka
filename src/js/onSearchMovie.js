@@ -1,6 +1,7 @@
 import { getSearchMovies } from './getFetch';
 import { renderMovieGallery } from './renderMovieGallery';
 import { movieGallery } from './renderMovieGallery';
+import { showLoader, hideLoader } from './loader';
 import { Notify } from 'notiflix';
 export function searchMovie() {
 let query = '';
@@ -13,7 +14,8 @@ const galleryEl = document.querySelector('.movie-list');
 formEl.addEventListener('submit', onSearchMovie);
 
  function onSearchMovie(e) {
-  e.preventDefault();
+   e.preventDefault();
+   showLoader();
   galleryEl.innerHTML = '';
   page = 1;
   query = inputEl.value.trim();
@@ -22,6 +24,7 @@ formEl.addEventListener('submit', onSearchMovie);
     getSearchMovies(query, page)
       .then(data => {
         console.log(data.results);
+        hideLoader();
         if (data.results.length === 0) {
           Notify.failure(
             'Sorry, there are no movies matching your search query. Please try again.',
@@ -44,6 +47,7 @@ formEl.addEventListener('submit', onSearchMovie);
       })
       .catch(error => console.log(error));
   } else {
+    hideLoader();
     Notify.info(
       'Enter your request in the field and watch interesting movies!',
       {
