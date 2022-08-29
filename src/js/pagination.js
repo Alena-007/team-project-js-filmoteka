@@ -22,6 +22,7 @@ function clear() {
 paginationPopular.on('afterMove', event => {
    clear();
   showPopularMovieGallery(event.page);
+ 
    window.scrollTo(0, 0);
 });
 

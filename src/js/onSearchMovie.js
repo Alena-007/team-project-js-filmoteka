@@ -42,6 +42,7 @@ formEl.addEventListener('submit', onSearchMovie);
           galleryEl.innerHTML = '';
           movieGallery.innerHTML = '';
           renderMovieGallery(data.results);
+          inputEl.value = '';
           getPaginationSearch(query);
           console.log(data);
           Notify.success(
