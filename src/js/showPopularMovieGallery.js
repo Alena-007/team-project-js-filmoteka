@@ -5,11 +5,21 @@ import { showLoader, hideLoader } from './loader';
 export function showPopularMovieGallery(numberPage) {
   showLoader();
 
-  getPopularMovies(numberPage)
-    .then(data => {
-      const filmsArray = data.results;
-      renderMovieGallery(filmsArray);
-      hideLoader();
-    })
-    .catch(error => console.log(error));
+  setTimeout(() => {
+    getPopularMovies(numberPage)
+      .then(data => {
+        const filmsArray = data.results;
+        renderMovieGallery(filmsArray);
+        hideLoader();
+      })
+      .catch(error => console.log(error));
+  }, 3000);
+
+  // getPopularMovies(numberPage)
+  //   .then(data => {
+  //     const filmsArray = data.results;
+  //     renderMovieGallery(filmsArray);
+  //     hideLoader();
+  //   })
+  //   .catch(error => console.log(error));
 }
