@@ -4,11 +4,13 @@ import { getMovieById } from './getFetch';
 const modalBox = document.querySelector('.modal-card')
 const modalBackdrop = document.querySelector('.backdrop');
 const closeButton = document.querySelector('.modal-close-button');
-
+export function modalId(dom) {
+ 
+}
 export const gallery = document.querySelector('.gallery')
 
 const galleryLibWatched = document.querySelector('.gallery__library-watched');
-  const galleryLibQueue = document.querySelector('.gallery__library-queue');
+const galleryLibQueue = document.querySelector('.gallery__library-queue');
 galleryLibWatched.addEventListener('click', clickOnMovieHandler);
 galleryLibQueue.addEventListener('click', clickOnMovieHandler);
 
