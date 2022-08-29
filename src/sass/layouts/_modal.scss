@@ -201,9 +201,16 @@
 }
 
 .modal-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.modal-button:active {
   background-color: #ff6b01;
   border-color: transparent;
   color: #ffffff;
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 /* max 767px */

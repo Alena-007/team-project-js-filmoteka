@@ -3,7 +3,8 @@ import { getSearchMovies } from './js/getFetch';
 import { getMovieById } from './js/getFetch';
 import { showPopularMovieGallery } from './js/showPopularMovieGallery';
 import { movieGallery } from './js/renderMovieGallery'; 
-import {showRenderGallery} from './js/renderMovieGallery'
+import { showRenderGallery } from './js/renderMovieGallery'
+import upButton from './js/upButton'
 // import { onOpenModal } from './js/modal';
 // import { onCloseModal } from './js/modal';
 import modal from './js/modal'
