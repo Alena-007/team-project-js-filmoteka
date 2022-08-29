@@ -13,17 +13,17 @@ import axios from 'axios';
 import team from './js/team';
 import { openModalBtn } from './js/team';
 import { closeModalBtn } from './js/team';
-
+import { addToLib } from './js/addToLib';
 import { teamModal } from './js/team';
-
+import { btnFilterLib } from './js/btn_filterLIbrary';
 const currentPage = document.querySelector('.current');
 
 if (currentPage.classList.contains('home')) {
   showPopularMovieGallery(1);
 } else {
   console.log('hello');
-  // console.log(arrId);
-  // // libraryMovieGallery(arrId);
+  addToLib();
+  btnFilterLib();
 }
 
 getPagination();
