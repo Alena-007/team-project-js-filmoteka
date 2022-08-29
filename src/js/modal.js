@@ -43,7 +43,6 @@ console.log(movieId)
      btnWatch.addEventListener('click', addToWatchedLoc);
 btnQueue.addEventListener('click', addToQueue);
   } catch (error) {
-
     console.error('error');
   }
 }
