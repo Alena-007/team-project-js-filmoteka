@@ -2,21 +2,31 @@
 import { getMovieById } from './getFetch';
 
 
-const modalBox = document.querySelector('.modal-card')
+export function modalId(dom) {
+  const modalBox = document.querySelector('.modal-card')
 const modalBackdrop = document.querySelector('.backdrop');
 const closeButton = document.querySelector('.modal-close-button');
+  if (dom === document.querySelector('.gallery')) {
 
-export const gallery = document.querySelector('.gallery')
-
-gallery.addEventListener('click', clickOnMovieHandler);
-
+    const gallery = document.querySelector('.gallery');
+   gallery.addEventListener('click', clickOnMovieHandler);
+  } else if (dom === document.querySelector('.gallery__library-watched')) {
+    
+   const galleryLibWatched = document.querySelector('.gallery__library-watched');
+    galleryLibWatched.addEventListener('click', clickOnMovieHandler);
+  } else if (dom === document.querySelector('.gallery__library-queue')) {
+    
+     const galleryLibQueue = document.querySelector('.gallery__library-queue');
+   galleryLibQueue.addEventListener('click', clickOnMovieHandler); 
+ }
+let movieId = null;
 async function clickOnMovieHandler(e) {
   e.preventDefault();
 
   if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'H2') {
     return;
   }
-  let movieId = e.target.dataset.id;
+  movieId = e.target.dataset.id;
   console.log(movieId)
   
   await fetchById(movieId);
@@ -25,13 +35,13 @@ async function clickOnMovieHandler(e) {
 
 async function fetchById(id) {
   try {
-    const movieId = await getMovieById(id);
+   const movieId = await getMovieById(id);
 console.log(movieId)
     renderMovieModal(movieId);
-   
-    const btnQueue = document.querySelector('.modal-add-queue-button');
-    const btnWatch = document.querySelector('.modal-add-watched-button');
-
+   const btnQueue = document.querySelector('.modal-add-queue-button');
+     const btnWatch = document.querySelector('.modal-add-watched-button');
+     btnWatch.addEventListener('click', addToWatchedLoc);
+btnQueue.addEventListener('click', addToQueue);
   } catch (error) {
 
     console.error('error');
@@ -63,6 +73,7 @@ function modalClosing() {
  
   modalBackdrop.classList.add('is-hidden')
   document.body.style.overflow = '';
+
   modalBackdrop.removeEventListener('click', modalClosinByBackdrop);
   closeButton.removeListener('click', modalClosing);
   window.removeEventListener('keydown', modalClosinByEsc);
@@ -75,6 +86,7 @@ function modalClosinByEsc(event) {
   }
 }
 
+
 function modalClosinByBackdrop(e) {
     e.preventDefault();
     document.body.style.overflow = '';
@@ -83,8 +95,20 @@ function modalClosinByBackdrop(e) {
     }
 }
 
+function addToWatchedLoc() {
+   
+    getMovieById(movieId).then(info => {
+        localStorage.setItem(`choiseMovieWatched ${movieId}`, JSON.stringify(info));
+        return movieId;
+    });
+}
 
-
+function addToQueue() {
+      getMovieById(movieId).then(info => {
+        localStorage.setItem(`choiseMovieQueue ${movieId}`, JSON.stringify(info));
+        return movieId;
+    });
+} 
 
 
 //////
@@ -171,3 +195,6 @@ function renderMovieInfo({ poster_path, title, vote_average, vote_count, popular
             </div>
           </div>`
 }
+  
+}
+

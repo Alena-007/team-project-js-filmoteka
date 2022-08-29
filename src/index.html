@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Filmoteka</title>
+    <link rel="shortcut icon" href="./images/favicon.ico"/>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -33,8 +34,10 @@
           </div>
           <nav class="navigation">
             <ul class="list navigation__wrapper">
-              <li class="navigation__item">
-                <a href="./index.html" class="navigation__link link current"
+              <li class="navigation__item">               
+               <a
+                  href="./index.html"
+                  class="navigation__link link current home"
                   >Home</a
                 >
               </li>
@@ -47,32 +50,31 @@
           </nav>
         </div>
         <div class="search__wrapper">
-          <input
-            class="search__input"
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Movie search"
-          />
-          <svg class="search__icon" width="12" height="12">
-            <use href="./images/icons.svg#icon-search"></use>
-          </svg>
+          <form class="search-form" id="search-form">
+            <input
+              class="search__input"
+              type="text"
+              name="searchQuery"
+              autocomplete="off"
+              placeholder="Movie search"
+            />
+            <button class="search-btn" type="submit">
+              <img
+                width="16"
+                height="16"
+                class="search__icon"
+                src="/src/images/icon-search.png"
+                alt="search"
+              />
+            </button>
+          </form>
         </div>
       </div>
     </header>
     <main>
       <div class="container">
-        <div>
-          <button id="popular" type="button">popular</button>
-        </div>
-        <div>
-          <button id="search-btn" type="button">search</button>
-        </div>
-        <div>
-          <button id="by-id" type="button">by-id</button>
-        </div>
-
         <div class="gallery"></div>
+        <div class="movie-list"></div>
         <div id="tui-pagination-container" class="tui-pagination"></div>
         <div class="loader is-hidden loader--style3">
           <div class="spiner">
@@ -121,15 +123,17 @@
             </svg>
             <span
               >by
-              <a class="developers_link link" href=""> GoIT Students</a></span
+              <a class="developers_link link" href="#" data-team-open>
+                GoIT Students</a
+              ></span
             >
           </p>
         </div>
       </div>
     </footer>
-
     <include src="./partials/modal.html"></include>
     <include src="./partials/upButton.html"></include>
+    <include src="./partials/team.html"></include>
     <script type="module" src="./index.js"></script>
   </body>
 </html>
