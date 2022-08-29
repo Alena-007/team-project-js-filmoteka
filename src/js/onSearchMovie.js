@@ -2,14 +2,19 @@ import { getSearchMovies } from './getFetch';
 import { renderMovieGallery } from './renderMovieGallery';
 import { movieGallery } from './renderMovieGallery';
 import { showLoader, hideLoader } from './loader';
+import { getPaginationSearch} from './pagination';
 import { Notify } from 'notiflix';
-export function searchMovie() {
-let query = '';
-let page = 1;
 
 const formEl = document.querySelector('.search-form');
 const inputEl = document.querySelector('input');
-const galleryEl = document.querySelector('.movie-list');
+export const galleryEl = document.querySelector('.movie-list');
+const tuiPopularEl = document.querySelector('.pagin-popular');
+console.log(tuiPopularEl);
+let query = '';
+
+export function searchMovie() {
+
+let page = 1;
 
 formEl.addEventListener('submit', onSearchMovie);
 
@@ -19,7 +24,8 @@ formEl.addEventListener('submit', onSearchMovie);
   galleryEl.innerHTML = '';
   page = 1;
   query = inputEl.value.trim();
-
+   tuiPopularEl.classList.add('visually-hidden');
+   
   if (query !== '') {
     getSearchMovies(query, page)
       .then(data => {
@@ -36,6 +42,8 @@ formEl.addEventListener('submit', onSearchMovie);
           galleryEl.innerHTML = '';
           movieGallery.innerHTML = '';
           renderMovieGallery(data.results);
+          inputEl.value = '';
+          getPaginationSearch(query);
           console.log(data);
           Notify.success(
             `Hooray! We found ${data.total_results} movies for you! Enjoy watching the movie.`,

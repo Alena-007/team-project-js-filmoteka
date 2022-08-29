@@ -47,12 +47,12 @@ export const renderMovieGallery = filmsArray => {
       // console.log(idVal);
       const genreName = [];
       for (let value of idVal) {
-        console.log(value);
+        // console.log(value);
       }
       for (let genre of genre_ids) {
-        console.log(genre);
+        // console.log(genre);
         for (let key of idKey) {
-          console.log(key);
+          // console.log(key);
           if (key === genre) {
             genreName.push(idVal[5]);
           }

@@ -5,7 +5,7 @@ import { showPopularMovieGallery } from './js/showPopularMovieGallery';
 import { movieGallery } from './js/renderMovieGallery';
 import upButton from './js/upbutton';
 import { searchMovie } from './js/onSearchMovie';
-import { getPagination } from './js/pagination';
+import { getPaginationPopular } from './js/pagination';
 // import {showRenderGallery} from './js/renderMovieGallery'
 // import { onOpenModal } from './js/modal';
 // import { onCloseModal } from './js/modal';
@@ -24,12 +24,13 @@ if (currentPage.classList.contains('home')) {
   showPopularMovieGallery(1);
   modalId(document.querySelector('.gallery'));
   searchMovie();
+  getPaginationPopular();
 } else {
   console.log('hello');
   addToLib();
   btnFilterLib();
 }
 
-getPagination();
+
 
 // showRenderGallery(1)
