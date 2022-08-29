@@ -131,11 +131,11 @@
 }
 
 .tui-pagination .tui-prev {
-  margin-right: 10px;
+  margin-right: 0px;
 }
 
 .tui-pagination .tui-next {
-  margin-left: 10px;
+  margin-left: 0px;
 }
 
 .tui-pagination .tui-ico-first {
@@ -218,4 +218,14 @@
   height: 12px;
   padding: 8px 0 6px;
   vertical-align: top;
+}
+
+@media screen and (min-width: 768px) {
+  .tui-pagination .tui-prev {
+    margin-right: 10px;
+  }
+
+  .tui-pagination .tui-next {
+    margin-left: 10px;
+  }
 }

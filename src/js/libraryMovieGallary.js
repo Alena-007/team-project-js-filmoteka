@@ -9,7 +9,7 @@ export function libraryMovieGallery({
   vote_average,
         id,
       }) {
-  return result = `<div class="gallery__card">
+  return `<div class="gallery__card">
         <a class="gallery__item link" href="">
           <img class="gallery__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="" loading="lazy" data-id=${id} />
           <div class="gallery__item-data">
