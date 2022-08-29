@@ -20,6 +20,8 @@ btnQueue.classList.add('current-btn_library');
 galleryLQueue.classList.remove('visually-hidden');
 }
 function showWatched(e) {
+    btnWatched.classList.add('current-btn_library');
+    btnQueue.classList.remove('current-btn_library');
 galleryLQueue.classList.add('visually-hidden');
 galleryLWatched.classList.remove('visually-hidden');
 }

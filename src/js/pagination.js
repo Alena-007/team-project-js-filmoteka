@@ -21,6 +21,7 @@ const pagination = new Pagination('tui-pagination-container', {
 pagination.on('afterMove', event => {
   resetPopular();
   showPopularMovieGallery(event.page);
+     window.scrollTo(0, 0);
 });
 
 getPopularMovies(1)
