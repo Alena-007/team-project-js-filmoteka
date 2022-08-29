@@ -2,14 +2,14 @@ import { getPopularMovies } from './js/getFetch';
 import { getSearchMovies } from './js/getFetch';
 import { getMovieById } from './js/getFetch';
 import { showPopularMovieGallery } from './js/showPopularMovieGallery';
-import { movieGallery } from './js/renderMovieGallery'; 
-import upButton from './js/upButton'
+import { movieGallery } from './js/renderMovieGallery';
+import upButton from './js/upbutton';
 import { searchMovie } from './js/onSearchMovie';
 import { getPagination } from './js/pagination';
 // import {showRenderGallery} from './js/renderMovieGallery'
 // import { onOpenModal } from './js/modal';
 // import { onCloseModal } from './js/modal';
-import {modalId} from './js/modal';
+import { modalId } from './js/modal';
 import axios from 'axios';
 import team from './js/team';
 import { openModalBtn } from './js/team';
