@@ -50,22 +50,31 @@
           </nav>
         </div>
         <div class="search__wrapper">
-          <input
-            class="search__input"
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Movie search"
-          />
-          <svg class="search__icon" width="12" height="12">
-            <use href="./images/icons.svg#icon-search"></use>
-          </svg>
+          <form class="search-form" id="search-form">
+            <input
+              class="search__input"
+              type="text"
+              name="searchQuery"
+              autocomplete="off"
+              placeholder="Movie search"
+            />
+            <button class="search-btn" type="submit">
+              <img
+                width="16"
+                height="16"
+                class="search__icon"
+                src="/src/images/icon-search.png"
+                alt="search"
+              />
+            </button>
+          </form>
         </div>
       </div>
     </header>
     <main>
       <div class="container">
         <div class="gallery"></div>
+        <div class="movie-list"></div>
         <div id="tui-pagination-container" class="tui-pagination"></div>
         <div class="loader is-hidden loader--style3">
           <div class="spiner">
