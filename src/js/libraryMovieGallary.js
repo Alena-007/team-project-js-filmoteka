@@ -1,4 +1,6 @@
 // import { movieGallery } from '../index';
+
+
 const movieGallery = document.querySelector('.gallery');
 
 export function libraryMovieGallery({

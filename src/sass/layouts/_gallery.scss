@@ -143,8 +143,13 @@
         height: 574px;
     }
 
-    .gallery__item-title, .gallery__item-text {
+    .gallery__item-title, .gallery__item-text, .empty-library-watched {
         font-size: 20px;
         line-height: 1.20;
     }
+}
+.empty-library-watched {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
