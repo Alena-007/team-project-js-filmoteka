@@ -1,12 +1,24 @@
 
 import { getMovieById } from './getFetch';
 
-const backdrop = document.querySelector(".backdrop")
-const modalBox = document.querySelector(".modal-card")
 
-export const gallery = document.querySelector(".gallery")
+export function modalId(dom) {
+  const modalBox = document.querySelector('.modal-card')
+const modalBackdrop = document.querySelector('.backdrop');
+const closeButton = document.querySelector('.modal-close-button');
+  if (dom === document.querySelector('.gallery')) {
 
-gallery.addEventListener('click', clickOnMovieHandler);
+    const gallery = document.querySelector('.gallery');
+   gallery.addEventListener('click', clickOnMovieHandler);
+  } else if (dom === document.querySelector('.gallery__library-watched')) {
+    
+   const galleryLibWatched = document.querySelector('.gallery__library-watched');
+    galleryLibWatched.addEventListener('click', clickOnMovieHandler);
+  } else if (dom === document.querySelector('.gallery__library-queue')) {
+    
+     const galleryLibQueue = document.querySelector('.gallery__library-queue');
+   galleryLibQueue.addEventListener('click', clickOnMovieHandler); 
+ }
 let movieId = null;
 async function clickOnMovieHandler(e) {
   e.preventDefault();
@@ -35,22 +47,19 @@ btnQueue.addEventListener('click', addToQueue);
     console.error('error');
   }
 }
+
 function renderMovieModal(data) {
   const modalMarkup = renderMovieInfo(data);
   try {
     modalBox.innerHTML = modalMarkup;
     console.log(modalBox)
-    backdrop.classList.add('is-open');
-    backdrop.classList.remove('is-hidden');
-    document.body.style.overflow = 'hidden';
 
+    modalBackdrop.classList.remove('is-hidden');
+    document.body.style.overflow = 'hidden';
     // writeLogoProdCompany(data);
 
-    const modalBackdrop = document.querySelector('.backdrop');
-    const closeButton = document.querySelector('.modal-close-button');
-
-    modalBackdrop.addEventListener('click', modalClosing);
     closeButton.addEventListener('click', modalClosing);
+    modalBackdrop.addEventListener('click', modalClosinByBackdrop);
     window.addEventListener('keydown', modalClosinByEsc);
   } catch (error) {
     console.error('error');
@@ -58,19 +67,32 @@ function renderMovieModal(data) {
 
 }
 
-// закриття модалки(але поки не працює)
+// закриття модалки
+
 function modalClosing() {
-  backdrop.classList.remove('is-open');
-  backdrop.classList.add('is-hidden')
+ 
+  modalBackdrop.classList.add('is-hidden')
   document.body.style.overflow = '';
-  // modalBackdrop.removeEventListener('click', modalClosing); //тут пробует достчатся к переменной, которой не видно
-  // closeButton.removeListener('click', modalClosing);
+
+  modalBackdrop.removeEventListener('click', modalClosinByBackdrop);
+  closeButton.removeListener('click', modalClosing);
   window.removeEventListener('keydown', modalClosinByEsc);
+
 }
+
 function modalClosinByEsc(event) {
   if (event.code === 'Escape') {
     modalClosing();
   }
+}
+
+
+function modalClosinByBackdrop(e) {
+    e.preventDefault();
+    document.body.style.overflow = '';
+    if (e.target.className === 'backdrop') {
+        modalClosing();
+    }
 }
 
 function addToWatchedLoc() {
@@ -88,12 +110,17 @@ function addToQueue() {
     });
 } 
 
+
 //////
 function renderMovieInfo({ poster_path, title, vote_average, vote_count, popularity, original_title, genres, overview, }) {
 
 
   const genreNames = genres.map(genre => genre.name)
-  let listGenreNames = genreNames.slice(0, 2).join(", ")
+    let listGenreNames = genreNames.slice(0, 2)
+    if (genreNames.length >= 2 || genreNames.length === 0) {
+    listGenreNames.push('Others');
+  }
+  const genreInfo = listGenreNames.join(', ');
 
     return `<div class="modal-card">
             <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}poster" class="modal-card-poster" />
@@ -140,7 +167,7 @@ function renderMovieInfo({ poster_path, title, vote_average, vote_count, popular
                       Genre
                     </td>
                     <td class="modal-propery-genre-value modal-property-value">
-                      ${listGenreNames}, Others
+                      ${genreInfo}
                     </td>
                   </tr>
                 </tbody>
@@ -168,3 +195,6 @@ function renderMovieInfo({ poster_path, title, vote_average, vote_count, popular
             </div>
           </div>`
 }
+  
+}
+

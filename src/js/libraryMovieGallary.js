@@ -1,5 +1,5 @@
 // import { movieGallery } from '../index';
-// const movieGallery = document.querySelector('.gallery');
+const movieGallery = document.querySelector('.gallery');
 
 export const libraryMovieGallery = filmsArray => {
   const result = filmsArray
@@ -7,7 +7,7 @@ export const libraryMovieGallery = filmsArray => {
       ({
         poster_path,
         original_title,
-        genre_ids,
+        genres,
         release_date,
         vote_average,
         id,
@@ -20,7 +20,10 @@ export const libraryMovieGallery = filmsArray => {
               ${original_title}
             </p>
             <p class="gallery__item-text">
-              ${genre_ids} | ${release_date.substr(0, 4)}
+              ${genres
+                .map(genreName => genreName.name)
+                .slice(0, 3)
+                .join(', ')} | ${release_date.substr(0, 4)}
             </p>
           </div>
           <div class="gallery__item-rating">${vote_average.toFixed(1)}
@@ -30,5 +33,5 @@ export const libraryMovieGallery = filmsArray => {
     )
     .join('');
 
-  //   movieGallery.insertAdjacentHTML('beforeend', result);
+  movieGallery.insertAdjacentHTML('beforeend', result);
 };
