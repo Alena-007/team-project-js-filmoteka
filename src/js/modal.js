@@ -1,5 +1,8 @@
 
 import { getMovieById } from './getFetch';
+import { checkBtnWatch, checkBtnQueue } from './localStorage';
+import { WATCHSTORAGE_KEY, QUEUESTORAGE_KEY } from './localKey';
+
 
 
 export function modalId(dom) {
@@ -36,12 +39,28 @@ async function clickOnMovieHandler(e) {
 async function fetchById(id) {
   try {
    const movieId = await getMovieById(id);
-console.log(movieId)
+// console.log(movieId)
     renderMovieModal(movieId);
-   const btnQueue = document.querySelector('.modal-add-queue-button');
-     const btnWatch = document.querySelector('.modal-add-watched-button');
-     btnWatch.addEventListener('click', addToWatchedLoc);
-btnQueue.addEventListener('click', addToQueue);
+
+    const btnQueue = document.querySelector('.modal-add-queue-button');
+    const btnWatch = document.querySelector('.modal-add-watched-button');
+
+    const stringId = String(id);
+    let arr = localStorage.getItem(WATCHSTORAGE_KEY);
+    arr = arr ? JSON.parse(arr) : [];
+    let arr2 = localStorage.getItem(QUEUESTORAGE_KEY);
+    arr2 = arr2 ? JSON.parse(arr2) : [];
+    const inStorage = arr.find(storageId => storageId === stringId);
+    const inStorage2 = arr2.find(storageId => storageId === stringId);
+
+    btnWatch.textContent = inStorage ? 'REMOVE FROM WATCHED' : 'ADD TO WATCHED';
+    btnQueue.textContent = inStorage2 ? 'REMOVE FROM QUEUE' : 'ADD TO QUEUE';
+
+    btnWatch.dataset.id = id;
+    btnQueue.dataset.id = id;
+
+    btnWatch.addEventListener('click', checkBtnWatch);
+    btnQueue.addEventListener('click', checkBtnQueue);
   } catch (error) {
     console.error('error');
   }
@@ -60,6 +79,7 @@ function renderMovieModal(data) {
     closeButton.addEventListener('click', modalClosing);
     modalBackdrop.addEventListener('click', modalClosinByBackdrop);
     window.addEventListener('keydown', modalClosinByEsc);
+
   } catch (error) {
     console.error('error');
   }
@@ -76,6 +96,8 @@ function modalClosing() {
   modalBackdrop.removeEventListener('click', modalClosinByBackdrop);
   closeButton.removeListener('click', modalClosing);
   window.removeEventListener('keydown', modalClosinByEsc);
+  btnWatch.removeEventListener('click', checkBtnWatch);
+  btnQueue.removeEventListener('click', checkBtnQueue);
 
 }
 
@@ -94,20 +116,20 @@ function modalClosinByBackdrop(e) {
     }
 }
 
-function addToWatchedLoc() {
+// function addToWatchedLoc() {
    
-    getMovieById(movieId).then(info => {
-        localStorage.setItem(`choiseMovieWatched ${movieId}`, JSON.stringify(info));
-        return movieId;
-    });
-}
+//     getMovieById(movieId).then(info => {
+//         localStorage.setItem(`choiseMovieWatched ${movieId}`, JSON.stringify(info));
+//         return movieId;
+//     });
+// }
 
-function addToQueue() {
-      getMovieById(movieId).then(info => {
-        localStorage.setItem(`choiseMovieQueue ${movieId}`, JSON.stringify(info));
-        return movieId;
-    });
-} 
+// function addToQueue() {
+//       getMovieById(movieId).then(info => {
+//         localStorage.setItem(`choiseMovieQueue ${movieId}`, JSON.stringify(info));
+//         return movieId;
+//     });
+// } 
 
 
 //////
@@ -180,16 +202,12 @@ function renderMovieInfo({ poster_path, title, vote_average, vote_count, popular
                 <button
                   type="button"
                   class="modal-add-watched-button modal-button"
-                >
-                  ADD TO WATCHED
-                </button>
+                ></button>
 
                 <button
                   type="button"
                   class="modal-add-queue-button modal-button"
-                >
-                  ADD TO QUEUE
-                </button>
+                ></button>
               </div>
             </div>
           </div>`
