@@ -1,16 +1,18 @@
 // import { movieGallery } from '../index';
-// const movieGallery = document.querySelector('.gallery');
+const movieGallery = document.querySelector('.gallery');
 
-export function libraryMovieGallery({
+export const libraryMovieGallery = filmsArray => {
+  const result = filmsArray
+    .map(
+      ({
         poster_path,
         original_title,
-        genre_ids,
+        genres,
         release_date,
-  vote_average,
+        vote_average,
         id,
-      }) {
-  return `<div class="gallery__card">
-        <a class="gallery__item link" href="">
+      }) => `<div class="gallery__card">
+        <a class="gallery__item link" href="" onclick="event.preventDefault()>
           <img class="gallery__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="" loading="lazy" data-id=${id} />
           <div class="gallery__item-data">
           <div class="gallery__item-info">
@@ -18,11 +20,18 @@ export function libraryMovieGallery({
               ${original_title}
             </p>
             <p class="gallery__item-text">
-              ${genre_ids} | ${release_date.substr(0, 4)}
+              ${genres
+                .map(genreName => genreName.name)
+                .slice(0, 3)
+                .join(', ')} | ${release_date.substr(0, 4)}
             </p>
           </div>
           <div class="gallery__item-rating">${vote_average.toFixed(1)}
             </div></div>
         </a>
-      </div>`;
-}
+      </div>`
+    )
+    .join('');
+
+  movieGallery.insertAdjacentHTML('beforeend', result);
+};
