@@ -1,13 +1,24 @@
 
 import { getMovieById } from './getFetch';
 
-const modalBox = document.querySelector('.modal-card')
+
+export function modalId(dom) {
+  const modalBox = document.querySelector('.modal-card')
 const modalBackdrop = document.querySelector('.backdrop');
 const closeButton = document.querySelector('.modal-close-button');
+  if (dom === document.querySelector('.gallery')) {
 
-export const gallery = document.querySelector('.gallery')
-
-gallery.addEventListener('click', clickOnMovieHandler);
+    const gallery = document.querySelector('.gallery');
+   gallery.addEventListener('click', clickOnMovieHandler);
+  } else if (dom === document.querySelector('.gallery__library-watched')) {
+    
+   const galleryLibWatched = document.querySelector('.gallery__library-watched');
+    galleryLibWatched.addEventListener('click', clickOnMovieHandler);
+  } else if (dom === document.querySelector('.gallery__library-queue')) {
+    
+     const galleryLibQueue = document.querySelector('.gallery__library-queue');
+   galleryLibQueue.addEventListener('click', clickOnMovieHandler); 
+ }
 let movieId = null;
 async function clickOnMovieHandler(e) {
   e.preventDefault();
@@ -184,3 +195,6 @@ function renderMovieInfo({ poster_path, title, vote_average, vote_count, popular
             </div>
           </div>`
 }
+  
+}
+
