@@ -2,7 +2,7 @@ import { getPopularMovies } from './js/getFetch';
 import { getSearchMovies } from './js/getFetch';
 import { getMovieById } from './js/getFetch';
 import { showPopularMovieGallery } from './js/showPopularMovieGallery';
-import { onSearchMovie } from './js/onSearchMovie';
+import { searchMovie } from './js/onSearchMovie';
 import { getPagination } from './js/pagination';
 
 // import {showRenderGallery} from './js/renderMovieGallery'
@@ -21,6 +21,7 @@ const currentPage = document.querySelector('.current');
 if (currentPage.classList.contains('home')) {
   showPopularMovieGallery(1);
   modalId(document.querySelector('.gallery'));
+  searchMovie();
 } else {
   console.log('hello');
   addToLib();
