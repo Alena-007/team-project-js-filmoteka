@@ -17,6 +17,7 @@ import { closeModalBtn } from './js/team';
 import { addToLib } from './js/addToLib';
 import { teamModal } from './js/team';
 import { btnFilterLib } from './js/btn_filterLIbrary';
+
 const currentPage = document.querySelector('.current');
 
 if (currentPage.classList.contains('home')) {
