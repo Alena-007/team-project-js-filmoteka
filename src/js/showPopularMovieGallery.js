@@ -13,7 +13,7 @@ export function showPopularMovieGallery(numberPage) {
         hideLoader();
       })
       .catch(error => console.log(error));
-  }, 3000);
+  }, 1500);
 
   // getPopularMovies(numberPage)
   //   .then(data => {
