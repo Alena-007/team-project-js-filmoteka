@@ -41,6 +41,11 @@ export const renderMovieGallery = filmsArray => {
           }
         }
       }
+      let listGenreNames = genreName.slice(0, 2);
+      if (genreName.length >= 2 || genreName.length === 0) {
+        listGenreNames.push('Others');
+      }
+      // const genreInfo = listGenreNames.join(', ');
 
       return `<div class="gallery__card">
         <a class="gallery__item  link" href="" onclick="event.preventDefault()">
@@ -50,7 +55,7 @@ export const renderMovieGallery = filmsArray => {
               ${original_title}
             </p>
             <p class="gallery__item-text">
-              ${genreName
+              ${listGenreNames
                 .slice(0, 3)
                 .map(a => a)
                 .join(', ')} | ${release_date.substr(0, 4)}
