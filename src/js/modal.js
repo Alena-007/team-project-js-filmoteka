@@ -7,7 +7,12 @@ const closeButton = document.querySelector('.modal-close-button');
 
 export const gallery = document.querySelector('.gallery')
 
-gallery.addEventListener('click', clickOnMovieHandler);
+const galleryLibWatched = document.querySelector('.gallery__library-watched');
+  const galleryLibQueue = document.querySelector('.gallery__library-queue');
+galleryLibWatched.addEventListener('click', clickOnMovieHandler);
+galleryLibQueue.addEventListener('click', clickOnMovieHandler);
+
+// gallery.addEventListener('click', clickOnMovieHandler);
 let movieId = null;
 async function clickOnMovieHandler(e) {
   e.preventDefault();
