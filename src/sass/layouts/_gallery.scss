@@ -128,14 +128,14 @@
     .gallery, .gallery__library-watched, .gallery__library-queue {
         flex-basis: calc((100% / 3) - 16px);
         margin-right: -16px;
-        margin-bottom: -32px;
+        margin-bottom: -36px;
         }
 
     .gallery__card {
         width: 395px;
         height: 634px;
         margin-right: 16px;
-        margin-bottom: 32px;
+        margin-bottom: 36px;
     }
 
     .gallery__image {
