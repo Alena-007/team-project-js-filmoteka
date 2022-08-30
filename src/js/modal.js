@@ -29,6 +29,8 @@ export function modalId(dom) {
 
 async function clickOnMovieHandler(e) {
   e.preventDefault();
+const upButton = document.querySelector('.up-button-container');
+upButton.classList.add('is-hidden')
 
   if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'P') {
     return;
