@@ -17,7 +17,7 @@ export const renderMovieGallery = filmsArray => {
         <a class="gallery__item  link" href="" onclick="event.preventDefault()">
           <img class="gallery__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="" loading="lazy" data-id=${id} />
           <div class="gallery__item-info">
-            <p class="gallery__item-title">
+            <p class="gallery__item-title" data-id=${id}>
               ${original_title}
             </p>
             <p class="gallery__item-text">

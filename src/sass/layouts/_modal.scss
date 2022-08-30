@@ -141,24 +141,27 @@
 }
 
 .modal-vote-value {
+  display: flex;
   width: 36px;
   height: 16px;
   margin: 0px;
   border-radius: 5px;
   font-size: 12px;
-  text-align: center;
+  text-transform: uppercase;
+  justify-content: center;
   align-items: center;
   color: #ffffff;
   background-color: #ff6b01;
 }
 
 .modal-votes-value {
+  display: flex;
   width: 36px;
   height: 16px;
   margin: 0px;
   border-radius: 5px;
   font-size: 12px;
-  text-align: center;
+  justify-content: center;
   align-items: center;
 
   background-color: #f7f7f7;

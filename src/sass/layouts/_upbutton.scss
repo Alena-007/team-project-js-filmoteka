@@ -10,18 +10,26 @@
   background-color: #feefe4;
   box-shadow: 12px 12px 12px #c4c1be;
   bottom: 100px;
-  right: 40px;
+  right: 30px;
   z-index: 10;
   cursor: pointer;
+  //   visibility: hidden;
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .up-button-container:hover,
-.up-button-container:hover {
+.up-button-container:active {
   //   animation: animate 8s linear infinite;
   background: linear-gradient(320deg, #ff6b01 0%, #ffe4d0 100%);
   box-shadow: 12px 12px 12px #fccaa6;
   transition: all 0.3s ease-in-out 0s;
   background-color: #ff6b01;
+  transform: scale(1.1);
 }
 
 .up-button-icon {
@@ -41,7 +49,7 @@
     width: 50px;
     height: 50px;
     right: 30px;
-    bottom: 120px;
+    bottom: 100px;
   }
   .up-button-icon {
     width: 40px;
