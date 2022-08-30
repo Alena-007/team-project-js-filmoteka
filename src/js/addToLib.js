@@ -8,11 +8,9 @@ export function addToLib() {
   getArrLoc();
   for (let movie of arrW) {
     galleryLibWatched.insertAdjacentHTML('beforeend', libraryMovieGallery(JSON.parse(localStorage.getItem(movie))));
-    modalId(galleryLibWatched);
   }
    for (let movie of arrQ) {
      galleryLibQueue.insertAdjacentHTML('beforeend', libraryMovieGallery(JSON.parse(localStorage.getItem(movie))));
-    modalId(galleryLibQueue);
   }
 
  }

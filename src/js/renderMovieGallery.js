@@ -54,7 +54,7 @@ export const renderMovieGallery = filmsArray => {
             <p class="gallery__item-title" data-id=${id}>
               ${original_title}
             </p>
-            <p class="gallery__item-text">
+            <p class="gallery__item-text" data-id=${id}>
               ${listGenreNames
                 .slice(0, 3)
                 .map(a => a)
