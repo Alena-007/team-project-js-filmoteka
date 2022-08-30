@@ -9,7 +9,7 @@ import { getPaginationPopular } from './js/pagination';
 // import {showRenderGallery} from './js/renderMovieGallery'
 // import { onOpenModal } from './js/modal';
 // import { onCloseModal } from './js/modal';
-import { modalId } from './js/modal';
+import { modalId, gallery, galleryLibQueue, galleryLibWatched } from './js/modal';
 import axios from 'axios';
 import team from './js/team';
 import { openModalBtn } from './js/team';
@@ -22,11 +22,12 @@ const currentPage = document.querySelector('.current');
 
 if (currentPage.classList.contains('home')) {
   showPopularMovieGallery(1);
-  modalId(document.querySelector('.gallery'));
+  modalId(gallery);
   searchMovie();
   getPaginationPopular();
 } else {
-  console.log('hello');
+  modalId(galleryLibWatched);
+  modalId(galleryLibQueue);
   addToLib();
   btnFilterLib();
 }

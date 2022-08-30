@@ -51,7 +51,7 @@ export const renderMovieGallery = filmsArray => {
         <a class="gallery__item  link" href="" onclick="event.preventDefault()">
           <img class="gallery__image" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${original_title}" loading="lazy" data-id=${id} onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm-UsZrhxFJebEgrmhqJIn7H4MhU6LAeqY9T0JLAVYpdcGcy4MfZBDM664hJS0GLmuC8A&usqp=CAU';"/>
           <div class="gallery__item-info">
-            <p class="gallery__item-title" data-id=${id}>
+            <p class="gallery__item-title">
               ${original_title}
             </p>
             <p class="gallery__item-text">

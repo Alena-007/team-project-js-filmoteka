@@ -1,23 +1,24 @@
-
 import { getMovieById } from './getFetch';
-
 import { arrQ, arrW, getArrLoc } from './getLocal';
-import { addToLib } from './addToLib';
+
+export const gallery = document.querySelector('.gallery');
+export const galleryLibWatched = document.querySelector('.gallery__library-watched');
+export const galleryLibQueue = document.querySelector('.gallery__library-queue');
+
 export function modalId(dom) {
   const modalBox = document.querySelector('.modal-card')
   const modalBackdrop = document.querySelector('.backdrop');
   const closeButton = document.querySelector('.modal-close-button');
-  if (dom === document.querySelector('.gallery')) {
+  if (dom === gallery) {
 
-    const gallery = document.querySelector('.gallery');
     gallery.addEventListener('click', clickOnMovieHandler);
-  } else if (dom === document.querySelector('.gallery__library-watched')) {
+  } else if (dom === galleryLibWatched) {
 
-    const galleryLibWatched = document.querySelector('.gallery__library-watched');
+
     galleryLibWatched.addEventListener('click', clickOnMovieHandler);
-  } else if (dom === document.querySelector('.gallery__library-queue')) {
+  } else if (dom === galleryLibQueue) {
     
-    const galleryLibQueue = document.querySelector('.gallery__library-queue');
+
     galleryLibQueue.addEventListener('click', clickOnMovieHandler); 
  }
   let movieId = null;
@@ -26,16 +27,13 @@ export function modalId(dom) {
   let keyW = '';
   let keyQ = '';
 
-    
-  async function clickOnMovieHandler(e) {
-    e.preventDefault();
-    
-    if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'P') {
-      return;
-    }
+async function clickOnMovieHandler(e) {
+  e.preventDefault();
 
+  if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'P') {
+    return;
+  }
   movieId = e.target.dataset.id;
-  console.log(movieId)
   getArrLoc();
   keyW = `choiseMovieWatched ${movieId}`;
   keyQ = `choiseMovieQueue ${movieId}`;
@@ -46,7 +44,6 @@ export function modalId(dom) {
 async function fetchById(id) {
   try {
    const movieIdF = await getMovieById(id);
-console.log(movieIdF)
     renderMovieModal(movieIdF);
     btnQueue = document.querySelector('.modal-add-queue-button');
     btnWatch = document.querySelector('.modal-add-watched-button');
@@ -54,35 +51,37 @@ console.log(movieIdF)
     btnQueue.addEventListener('click', addToQueue);
     if (arrW.includes(keyW)) {
       btnWatch.classList.add('btn-disabled');
-      btnWatch.innerHTML = 'REMOVE MOVIE';
+      btnWatch.innerHTML = 'remove from watched';
     }
     if (arrQ.includes(keyQ)) {
       btnQueue.classList.add('btn-disabled');
-      btnQueue.innerHTML = 'REMOVE MOVIE';
+      btnQueue.innerHTML = 'remove from queue';
   }
   } catch (error) {
-        
-  
-  function renderMovieModal(data) {
-    const modalMarkup = renderMovieInfo(data);
-    try {
-      modalBox.innerHTML = modalMarkup;
-      console.log(modalBox)
 
-      modalBackdrop.classList.remove('is-hidden');
-      document.body.style.overflow = 'hidden';
-      // writeLogoProdCompany(data);
+    console.error('error');
+  }
+}
 
-      closeButton.addEventListener('click', modalClosing);
-      modalBackdrop.addEventListener('click', modalClosinByBackdrop);
-      window.addEventListener('keydown', modalClosinByEsc);
-    } catch (error) {
-      console.error('error');
-    }
+function renderMovieModal(data) {
+  const modalMarkup = renderMovieInfo(data);
+  try {
+    modalBox.innerHTML = modalMarkup;
 
+    modalBackdrop.classList.remove('is-hidden');
+    document.body.style.overflow = 'hidden';
+    // writeLogoProdCompany(data);
+
+    closeButton.addEventListener('click', modalClosing);
+    modalBackdrop.addEventListener('click', modalClosinByBackdrop);
+    window.addEventListener('keydown', modalClosinByEsc);
+  } catch (error) {
+    console.error('error');
   }
 
-  // закриття модалки
+}
+
+// закриття модалки
 
 function modalClosing() {
   modalBackdrop.classList.add('is-hidden')
@@ -91,22 +90,26 @@ function modalClosing() {
   modalBackdrop.removeEventListener('click', modalClosinByBackdrop);
   closeButton.removeEventListener('click', modalClosing);
   window.removeEventListener('keydown', modalClosinByEsc);
+  btnQueue.removeEventListener('click', addToQueue);
+  btnWatch.removeEventListener('click', addToWatchedLoc);
+  if (dom !== gallery) {
+    window.location.reload();
+}
+}
 
+function modalClosinByEsc(event) {
+  if (event.code === 'Escape') {
+    modalClosing();
   }
+}
 
-  function modalClosinByEsc(event) {
-    if (event.code === 'Escape') {
-      modalClosing();
-    }
-  }
-
-  function modalClosinByBackdrop(e) {
+function modalClosinByBackdrop(e) {
     e.preventDefault();
     document.body.style.overflow = '';
     if (e.target.className === 'backdrop') {
-      modalClosing();
-    }
+        modalClosing();
   }
+}
 
 function addToWatchedLoc() {
   btnWatch.classList.toggle('btn-disabled');
@@ -114,16 +117,21 @@ function addToWatchedLoc() {
     localStorage.setItem(`choiseMovieWatched ${movieId}`, JSON.stringify(info));
   });
   if (btnWatch.classList.contains('btn-disabled')) {
-    btnWatch.innerHTML = 'REMOVE MOVIE';
+    btnWatch.innerHTML = 'remove from watch';
+  } else {
+    btnWatch.innerHTML = 'ADD TO WATCH';
   }
 }
+
 function addToQueue() {
   btnQueue.classList.toggle('btn-disabled');
   getMovieById(movieId).then(info => {
     localStorage.setItem(`choiseMovieQueue ${movieId}`, JSON.stringify(info));
   });
   if (btnQueue.classList.contains('btn-disabled')) {
-    btnQueue.innerHTML = 'REMOVE MOVIE';
+    btnQueue.innerHTML = 'remove from queue';
+  } else {
+btnQueue.innerHTML = 'ADD TO WATCH';
   }
 } 
   
@@ -141,25 +149,20 @@ function checkRemove() {
     arrQ.splice(index, 1);
   }
 }
+//////
+function renderMovieInfo({ poster_path, title, vote_average, vote_count, popularity, original_title, genres, overview,id }) {
 
- //////
-  function renderMovieInfo({ poster_path, title, vote_average, vote_count, popularity, original_title, genres, overview, id, }) {
-
-
-    const genreNames = genres.map(genre => genre.name)
-    let listGenreNames = genreNames.slice(0, 2)
-    if (genreNames.length >= 2 || genreNames.length === 0) {
-      listGenreNames.push('Others');
-    }
-    const genreInfo = listGenreNames.join(', ');
-
-    return `<div class="modal-card">
-
+  const genreNames = genres.map(genre => genre.name)
+  let listGenreNames = genreNames.slice(0, 2)
+  if (genreNames.length >= 2 || genreNames.length === 0) {
+    listGenreNames.push('Others');
+  }
+  const genreInfo = listGenreNames.join(', ');
+  return `<div class="modal-card">
             <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}poster" class="modal-card-poster" />
 
-            <div class="modal-movie-info-part"> <p>
-           <h2 class="modal-movie-title" data-id=${id}>${title}</h2>
-              </p>
+            <div class="modal-movie-info-part">
+              <h2 class="modal-movie-title" data-id=${id}>${title}</h2>
 
               <table class="modal-property-table-info">
                 <tbody class="modal-table-body-info">
@@ -227,6 +230,7 @@ function checkRemove() {
               </div>
             </div>
           </div>`
-  }
+}
+  
 }
 
