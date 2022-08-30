@@ -1,22 +1,27 @@
 
 
 const upButton = document.querySelector('.up-button-container');
+upButton.classList.add('is-hidden')
 
 const trackScroll = () => {
-    console.log("hello")
+   
     const scrolled = window.pageYOffset;
     const coords = document.documentElement.clientHeight;
 
     if (scrolled > coords) {
-      upButton.classList.add('visuallyhidden');
+        upButton.classList.remove('is-hidden')
+        // upButton.style.visibility = "visible"
+    //   upButton.classList.add('visuallyhidden');
     }
     if (scrolled < coords) {
-      upButton.classList.remove('visuallyhidden');
+        upButton.classList.add('is-hidden')
+        // upButton.style.visibility = "hidden"
+    //   upButton.classList.remove('visuallyhidden');
     }
 }
   
 const backToTop = () => {
-    console.log("hello")
+   
     if (window.pageYOffset > 0) {
       window.scrollBy(0, -80);
       setTimeout(backToTop, 0);
