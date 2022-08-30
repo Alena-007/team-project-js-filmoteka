@@ -1,17 +1,8 @@
 
 import { getMovieById } from './getFetch';
 
-
-
-// const modalBox = document.querySelector('.modal-card')
-// const modalBackdrop = document.querySelector('.backdrop');
-// const closeButton = document.querySelector('.modal-close-button');
-
-export const gallery = document.querySelector('.gallery')
-
-gallery.addEventListener('click', clickOnMovieHandler);
-
-
+import { arrQ, arrW, getArrLoc } from './getLocal';
+import { addToLib } from './addToLib';
 export function modalId(dom) {
   const modalBox = document.querySelector('.modal-card')
   const modalBackdrop = document.querySelector('.backdrop');
@@ -21,45 +12,57 @@ export function modalId(dom) {
     const gallery = document.querySelector('.gallery');
     gallery.addEventListener('click', clickOnMovieHandler);
   } else if (dom === document.querySelector('.gallery__library-watched')) {
-    
+
     const galleryLibWatched = document.querySelector('.gallery__library-watched');
     galleryLibWatched.addEventListener('click', clickOnMovieHandler);
   } else if (dom === document.querySelector('.gallery__library-queue')) {
     
     const galleryLibQueue = document.querySelector('.gallery__library-queue');
-    galleryLibQueue.addEventListener('click', clickOnMovieHandler);
-  }
+    galleryLibQueue.addEventListener('click', clickOnMovieHandler); 
+ }
   let movieId = null;
-  
+  let btnQueue = null;
+  let btnWatch = null;
+  let keyW = '';
+  let keyQ = '';
 
+    
   async function clickOnMovieHandler(e) {
     e.preventDefault();
-
+    
     if (e.target.nodeName !== 'IMG' && e.target.nodeName !== 'P') {
       return;
     }
-    let movieId = e.target.dataset.id;
-    console.log(movieId)
-  
-    await fetchById(movieId);
-    // textModalBtn(movieId); ////// треба ще зробити
-  }
 
-  async function fetchById(id) {
-    try {
-      const movieId = await getMovieById(id);
-      console.log(movieId)
-      renderMovieModal(movieId);
-   
-      const btnQueue = document.querySelector('.modal-add-queue-button');
-      const btnWatch = document.querySelector('.modal-add-watched-button');
+  movieId = e.target.dataset.id;
+  console.log(movieId)
+  getArrLoc();
+  keyW = `choiseMovieWatched ${movieId}`;
+  keyQ = `choiseMovieQueue ${movieId}`;
+  await fetchById(movieId);
+  // textModalBtn(movieId); ////// треба ще зробити
+}
 
-    } catch (error) {
-
-      console.error('error');
+async function fetchById(id) {
+  try {
+   const movieIdF = await getMovieById(id);
+console.log(movieIdF)
+    renderMovieModal(movieIdF);
+    btnQueue = document.querySelector('.modal-add-queue-button');
+    btnWatch = document.querySelector('.modal-add-watched-button');
+    btnWatch.addEventListener('click', addToWatchedLoc);
+    btnQueue.addEventListener('click', addToQueue);
+    if (arrW.includes(keyW)) {
+      btnWatch.classList.add('btn-disabled');
+      btnWatch.innerHTML = 'REMOVE MOVIE';
     }
+    if (arrQ.includes(keyQ)) {
+      btnQueue.classList.add('btn-disabled');
+      btnQueue.innerHTML = 'REMOVE MOVIE';
   }
-
+  } catch (error) {
+        
+  
   function renderMovieModal(data) {
     const modalMarkup = renderMovieInfo(data);
     try {
@@ -81,13 +84,13 @@ export function modalId(dom) {
 
   // закриття модалки
 
-  function modalClosing() {
- 
-    modalBackdrop.classList.add('is-hidden')
-    document.body.style.overflow = '';
-    modalBackdrop.removeEventListener('click', modalClosinByBackdrop);
-    closeButton.removeListener('click', modalClosing);
-    window.removeEventListener('keydown', modalClosinByEsc);
+function modalClosing() {
+  modalBackdrop.classList.add('is-hidden')
+  document.body.style.overflow = '';
+  checkRemove();
+  modalBackdrop.removeEventListener('click', modalClosinByBackdrop);
+  closeButton.removeEventListener('click', modalClosing);
+  window.removeEventListener('keydown', modalClosinByEsc);
 
   }
 
@@ -105,11 +108,41 @@ export function modalId(dom) {
     }
   }
 
+function addToWatchedLoc() {
+  btnWatch.classList.toggle('btn-disabled');
+  getMovieById(movieId).then(info => {
+    localStorage.setItem(`choiseMovieWatched ${movieId}`, JSON.stringify(info));
+  });
+  if (btnWatch.classList.contains('btn-disabled')) {
+    btnWatch.innerHTML = 'REMOVE MOVIE';
+  }
+}
+function addToQueue() {
+  btnQueue.classList.toggle('btn-disabled');
+  getMovieById(movieId).then(info => {
+    localStorage.setItem(`choiseMovieQueue ${movieId}`, JSON.stringify(info));
+  });
+  if (btnQueue.classList.contains('btn-disabled')) {
+    btnQueue.innerHTML = 'REMOVE MOVIE';
+  }
+} 
+  
+function checkRemove() {
+  if(!btnWatch.classList.contains('btn-disabled')) {
+    btnWatch.innerHTML = 'ADD TO WATCHED';
+    localStorage.removeItem(`choiseMovieWatched ${movieId}`);
+    const index = arrW.indexOf(`choiseMovieWatched ${movieId}`);
+    arrW.splice(index, 1);
+  }
+  if(!btnQueue.classList.contains('btn-disabled')) {
+    btnQueue.innerHTML = 'ADD TO QUEUE';
+    localStorage.removeItem(`choiseMovieQueue ${movieId}`);
+    const index = arrQ.indexOf(`choiseMovieQueue ${movieId}`);
+    arrQ.splice(index, 1);
+  }
+}
 
-
-
-
-  //////
+ //////
   function renderMovieInfo({ poster_path, title, vote_average, vote_count, popularity, original_title, genres, overview, id, }) {
 
 
@@ -121,6 +154,7 @@ export function modalId(dom) {
     const genreInfo = listGenreNames.join(', ');
 
     return `<div class="modal-card">
+
             <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}poster" class="modal-card-poster" />
 
             <div class="modal-movie-info-part"> <p>
@@ -195,3 +229,4 @@ export function modalId(dom) {
           </div>`
   }
 }
+

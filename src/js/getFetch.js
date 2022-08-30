@@ -4,6 +4,7 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const POPULAR_URL = `${BASE_URL}/trending/movie/week`;
 const SEARCH_URL = `${BASE_URL}/search/movie`;
 const MOVIE_ID_URL = `${BASE_URL}/movie/`;
+const GENRES = `${BASE_URL}/genre/movie/list`;
 
 export function getPopularMovies(page) {
   return fetch(`${POPULAR_URL}?api_key=${API_KEY}&page=${page}`).then(respons =>
@@ -21,4 +22,8 @@ export function getMovieById(id) {
   return fetch(`${MOVIE_ID_URL}${id}?api_key=${API_KEY}`).then(respons =>
     respons.json()
   );
+}
+
+export function getGenres() {
+  return fetch(`${GENRES}?api_key=${API_KEY}`).then(respons => respons.json());
 }

@@ -19,21 +19,23 @@
     />
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
+
   <body>
     <header class="header header_library">
       <div class="container">
         <div class="header__container">
-          <div class="website-title_wrapper">
-            <a class="logo" href="./index.html">
-              <svg class="logo__icon" width="24" height="24">
-                <use href="./images/icons.svg#icon-logo"></use></svg
-            ></a>
-            <h1 class="main-title">Filmoteka</h1>
-          </div>
+          <a class="logo" href="./index.html">
+            <svg class="logo__icon" width="24" height="24">
+              <use href="./images/icons.svg#icon-logo"></use>
+            </svg>
+            <h1 class="main-title">Filmoteka</h1></a
+          >
           <nav class="navigation">
             <ul class="list navigation__wrapper">
               <li class="navigation__item">
-                <a href="./index.html" class="navigation__link link">Home</a>
+                <a href="./index.html" class="navigation__link link home"
+                  >Home</a
+                >
               </li>
               <li class="navigation__item">
                 <a href="./library.html" class="navigation__link link current"
@@ -43,42 +45,32 @@
             </ul>
           </nav>
         </div>
-        <button type="button">WATCHED</button>
-        <button type="button">QUEUE</button>
-        <div class="gallery"></div>
+        <button class="btn-watched current-btn_library" type="button">
+          WATCHED
+        </button>
+        <button class="btn-queue" type="button">QUEUE</button>
       </div>
     </header>
     <main>
       <div class="container">
-        <div>
-          <button id="popular" type="button">popular</button>
-        </div>
-        <div>
-          <button id="search" type="button">search</button>
-        </div>
-        <div>
-          <button id="by-id" type="button">by-id</button>
-        </div>
+        <div class="gallery__library-watched"></div>
+        <div class="gallery__library-queue visually-hidden"></div>
+        <div
+          id="tui-pagination-container1"
+          class="tui-pagination pagin-popular'"
+        ></div>
+        <div
+          id="tui-pagination-container2"
+          class="tui-pagination pagin-search"
+        ></div>
+        <include src="./partials/tui_loader.html"></include>
       </div>
     </main>
-    <footer class="footer">
-      <div class="container">
-        <div class="footer__description">
-          <p>&#169; 2020 | All Rights Reserved |</p>
-          <p class="developers">
-            <span>Developed with</span>
-            <svg class="footer__icon" width="14" height="13">
-              <use href="./images/icons.svg#icon-favorite"></use>
-            </svg>
-            <span
-              >by
-              <a class="developers_link link" href=""> GoIT Students</a></span
-            >
-          </p>
-        </div>
-      </div>
-    </footer>
-
+    <include src="./partials/footer.html"></include>
+    <include src="./partials/modal.html"></include>
+    <include src="./partials/team.html"></include>
+    <include src="./partials/upbutton.html"></include>
     <script type="module" src="./index.js"></script>
+    <script type="module" src="./js/emptyGallery.js"></script>
   </body>
 </html>

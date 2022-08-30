@@ -185,7 +185,9 @@
   display: flex;
 }
 
-.modal-button {
+.modal-button,
+.btn-watched,
+.btn-queue {
   width: 136px;
   height: 44px;
   font-size: 12px;
@@ -291,4 +293,8 @@
   .modal-button {
     width: 125px;
   }
+}
+.btn-disabled {
+ background-color: var(--accent-color);
+ color: var(--add-textcolor);
 }
