@@ -9,11 +9,12 @@ const inputEl = document.querySelector('input');
 const tuiPopularEl = document.querySelector('.pagin-popular');
 let query = '';
 let page = 1;
-const loadMoreBtn = document.querySelector('.load-more');
-loadMoreBtn.addEventListener('click', onLoadMore);
-loadMoreBtn.classList.add('is-hidden');
+
 
 export function searchMovie() {
+  const loadMoreBtn = document.querySelector('.load-more');
+loadMoreBtn.addEventListener('click', onLoadMore);
+loadMoreBtn.classList.add('is-hidden');
   formEl.addEventListener('submit', onSearchMovie);
 
   function onSearchMovie(e) {
