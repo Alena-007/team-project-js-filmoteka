@@ -68,6 +68,9 @@
 }
 
 @media screen and (max-width: 767.98px) {
+    .gallery, .gallery__library-watched, .gallery__library-queue, .movie-list {
+        margin-bottom: 40px;
+    }
     .gallery__card {
         width: 280px;
         height: 440px;
@@ -93,13 +96,14 @@
 }
 
 @media screen and (min-width: 768px) {
-    .gallery, .gallery__library-watched, .gallery__library-queue {
+    .gallery, .gallery__library-watched, .gallery__library-queue, .movie-list {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         flex-basis: calc((100% / 2) - 32px);
         margin-left: -32px;
         margin-top: -32px;
+        margin-bottom: 60px;
     }
 
     .gallery__card {
@@ -125,14 +129,14 @@
 }
 
 @media screen and (min-width: 1280px) {
-    .gallery, .gallery__library-watched, .gallery__library-queue {
-        flex-basis: calc((100% / 3) - 16px);
+    .gallery, .gallery__library-watched, .gallery__library-queue, .movie-list {
+        flex-basis: calc((100% / 3) - 32px);
         margin-left: -16px;
         margin-top: -36px;
         }
 
     .gallery__card {
-        width: 395px;
+        width: 394px;
         height: 634px;
         margin-left: 16px;
         margin-top: 36px;

@@ -52,19 +52,21 @@
       </div>
     </header>
     <main>
-      <div class="container">
-        <div class="gallery__library-watched"></div>
-        <div class="gallery__library-queue visually-hidden"></div>
-        <div
-          id="tui-pagination-container1"
-          class="tui-pagination pagin-popular'"
-        ></div>
-        <div
-          id="tui-pagination-container2"
-          class="tui-pagination pagin-search"
-        ></div>
-        <include src="./partials/tui_loader.html"></include>
-      </div>
+      <section class="main-section">
+        <div class="container">
+          <div class="gallery__library-watched"></div>
+          <div class="gallery__library-queue visually-hidden"></div>
+          <div
+            id="tui-pagination-container1"
+            class="tui-pagination pagin-popular'"
+          ></div>
+          <div
+            id="tui-pagination-container2"
+            class="tui-pagination pagin-search"
+          ></div>
+          <include src="./partials/tui_loader.html"></include>
+        </div>
+      </section>
     </main>
     <include src="./partials/footer.html"></include>
     <include src="./partials/modal.html"></include>
