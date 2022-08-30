@@ -49,22 +49,16 @@ async function fetchById(id) {
     renderMovieModal(movieIdF);
     btnQueue = document.querySelector('.modal-add-queue-button');
     btnWatch = document.querySelector('.modal-add-watched-button');
-    
-   
+     btnQueue.addEventListener('click', addToQueue);
+    btnWatch.addEventListener('click', addToWatchedLoc);
     if (arrW.includes(keyW)) {
       btnWatch.classList.add('btn-disabled');
       btnWatch.innerHTML = 'remove from watched';
-      btnWatch.addEventListener('click', removeFromW);
-    } else {
-btnWatch.addEventListener('click', addToWatchedLoc);
-    }
+    } 
     if (arrQ.includes(keyQ)) {
       btnQueue.classList.add('btn-disabled');
       btnQueue.innerHTML = 'remove from queue';
-       btnQueue.addEventListener('click', removeFromQ);
-    } else {
-       btnQueue.addEventListener('click', addToQueue);
-  }
+    } 
   } catch (error) {
 
     console.error('error');
@@ -120,27 +114,32 @@ function modalClosinByBackdrop(e) {
 }
 
 function addToWatchedLoc() {
-  btnWatch.classList.add('btn-disabled');
-  getMovieById(movieId).then(info => {
+  btnWatch.classList.toggle('btn-disabled');
+  if (btnWatch.classList.contains('btn-disabled')) {
+     getMovieById(movieId).then(info => {
     localStorage.setItem(`choiseMovieWatched ${movieId}`, JSON.stringify(info));
-  });
+     });
     btnWatch.innerHTML = 'remove from watch';
-}
-  function removeFromW() {
-    btnWatch.classList.remove('btn-disabled');
+  } else {
+btnWatch.classList.remove('btn-disabled');
     btnWatch.innerHTML = 'ADD TO WATCH';
+  }
+    
 }
-function addToQueue() {
-  btnQueue.classList.add('btn-disabled');
-  getMovieById(movieId).then(info => {
-    localStorage.setItem(`choiseMovieQueue ${movieId}`, JSON.stringify(info));
-  });
-    btnQueue.innerHTML = 'remove from queue';
-} 
-    function removeFromQ() {
-    btnQueue.classList.remove('btn-disabled');
+  
+  function addToQueue() {
+    btnQueue.classList.toggle('btn-disabled');
+    if (btnQueue.classList.contains('btn-disabled')) {
+      getMovieById(movieId).then(info => {
+        localStorage.setItem(`choiseMovieQueue ${movieId}`, JSON.stringify(info));
+      });
+      btnQueue.innerHTML = 'remove from queue';
+    } else {
+      btnQueue.classList.remove('btn-disabled');
     btnQueue.innerHTML = 'ADD TO QUEUE';
-}
+    }
+  }
+
 function checkRemove() {
   if(!btnWatch.classList.contains('btn-disabled')) {
     btnWatch.innerHTML = 'ADD TO WATCHED';
