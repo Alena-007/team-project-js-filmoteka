@@ -9,7 +9,6 @@ const formEl = document.querySelector('.search-form');
 const inputEl = document.querySelector('input');
 export const galleryEl = document.querySelector('.movie-list');
 const tuiPopularEl = document.querySelector('.pagin-popular');
-console.log(tuiPopularEl);
 let query = '';
 
 export function searchMovie() {
@@ -29,7 +28,6 @@ formEl.addEventListener('submit', onSearchMovie);
   if (query !== '') {
     getSearchMovies(query, page)
       .then(data => {
-        console.log(data.results);
         hideLoader();
         if (data.results.length === 0) {
           Notify.failure(

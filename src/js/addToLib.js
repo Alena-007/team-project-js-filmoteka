@@ -1,23 +1,18 @@
 //   localStorage.setItem('infoAboutChoiseMovie', JSON.stringify(movieId));
-
+import { arrQ, arrW, getArrLoc } from './getLocal';
 import { libraryMovieGallery } from './libraryMovieGallary';
 import { modalId } from './modal';
 export function addToLib() {
   const galleryLibWatched = document.querySelector('.gallery__library-watched');
   const galleryLibQueue = document.querySelector('.gallery__library-queue');
-  for (let i = 0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
-    if (key.includes('choiseMovieWatched')) {
-      console.log(`${i + 1} element ${key}`)
-      galleryLibWatched.insertAdjacentHTML('beforeend', libraryMovieGallery(JSON.parse(localStorage.getItem(key))));
-      console.log(`draw element ${key}`)
-      modalId(galleryLibWatched);
-    } else if (key.includes('choiseMovieQueue')) {
-      console.log(`${i + 1} element Q ${key}`)
-      galleryLibQueue.insertAdjacentHTML('beforeend', libraryMovieGallery(JSON.parse(localStorage.getItem(key))));
-      modalId(galleryLibQueue);
-    }
-  
+  getArrLoc();
+  for (let movie of arrW) {
+    galleryLibWatched.insertAdjacentHTML('beforeend', libraryMovieGallery(JSON.parse(localStorage.getItem(movie))));
+    modalId(galleryLibWatched);
   }
-  // localStorage.clear();
-}
+   for (let movie of arrQ) {
+     galleryLibQueue.insertAdjacentHTML('beforeend', libraryMovieGallery(JSON.parse(localStorage.getItem(movie))));
+    modalId(galleryLibQueue);
+  }
+
+ }

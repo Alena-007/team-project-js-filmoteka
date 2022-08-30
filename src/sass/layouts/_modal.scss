@@ -291,3 +291,7 @@
     width: 125px;
   }
 }
+.btn-disabled {
+ background-color: var(--accent-color);
+ color: var(--add-textcolor);
+}
