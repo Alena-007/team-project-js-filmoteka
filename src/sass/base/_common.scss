@@ -32,3 +32,11 @@ img {
 .link {
   text-decoration: none;
 }
+.main-section {
+    padding-top: 20px;
+    padding-bottom: 40px;
+@media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+}
