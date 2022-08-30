@@ -23,6 +23,7 @@
 }
 
 .gallery__item-text {
+    max-width: 330px;
     font-family: var(--primary-font-family);
     font-style: normal;
     font-weight: 500;
@@ -36,8 +37,8 @@
 }
 
 .gallery__item-rating {
-    width: 40px;
-    height: 20px;
+    width: 36px;
+    height: 16px;
     font-family: var(--primary-font-family);
     font-style: normal;
     font-weight: 500;
@@ -57,15 +58,16 @@
 .gallery__item-data {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
+}
+
+.empty-library-watched {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (max-width: 767.98px) {
-    .gallery, .gallery__library-watched, .gallery__library-queue {
-        padding-top: 20px;
-        padding-bottom: 40px;
-        }
-
     .gallery__card {
         width: 280px;
         height: 440px;
@@ -96,17 +98,15 @@
         justify-content: center;
         flex-wrap: wrap;
         flex-basis: calc((100% / 2) - 32px);
-        margin-right: -32px;
-        margin-bottom: -32px;
-        padding-top: 60px;
-        padding-bottom: 60px;
+        margin-left: -32px;
+        margin-top: -32px;
     }
 
     .gallery__card {
         width: 336px;
         height: 494px;
-        margin-right: 32px;
-        margin-bottom: 32px;
+        margin-left: 32px;
+        margin-top: 32px;
     }
 
     .gallery__image {
@@ -127,15 +127,15 @@
 @media screen and (min-width: 1280px) {
     .gallery, .gallery__library-watched, .gallery__library-queue {
         flex-basis: calc((100% / 3) - 16px);
-        margin-right: -16px;
-        margin-bottom: -36px;
+        margin-left: -16px;
+        margin-top: -36px;
         }
 
     .gallery__card {
         width: 395px;
         height: 634px;
-        margin-right: 16px;
-        margin-bottom: 36px;
+        margin-left: 16px;
+        margin-top: 36px;
     }
 
     .gallery__image {
@@ -147,9 +147,9 @@
         font-size: 20px;
         line-height: 1.20;
     }
-}
-.empty-library-watched {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    .gallery__item-rating {
+        width: 40px;
+        height: 20px;
+    }
 }
