@@ -107,8 +107,9 @@ function modalClosinByEsc(event) {
 
 function modalClosinByBackdrop(e) {
     e.preventDefault();
-    document.body.style.overflow = '';
+    
     if (e.target.className === 'backdrop') {
+      document.body.style.overflow = '';
         modalClosing();
   }
 }
