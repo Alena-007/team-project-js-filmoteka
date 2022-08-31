@@ -15,11 +15,4 @@ export function showPopularMovieGallery(numberPage) {
       .catch(error => console.log(error));
   }, 500);
 
-  // getPopularMovies(numberPage)
-  //   .then(data => {
-  //     const filmsArray = data.results;
-  //     renderMovieGallery(filmsArray);
-  //     hideLoader();
-  //   })
-  //   .catch(error => console.log(error));
 }
