@@ -22,6 +22,7 @@ import { closeModalBtn } from './js/team';
 import { addToLib } from './js/addToLib';
 import { teamModal } from './js/team';
 import { btnFilterLib } from './js/btn_filterLIbrary';
+import changetheme from './js/changetheme'
 import { onLoadMore } from './js/onSearchMovie';
 
 const currentPage = document.querySelector('.current');
