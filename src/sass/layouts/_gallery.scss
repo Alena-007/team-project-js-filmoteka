@@ -160,11 +160,16 @@
   }
 
   .gallery__item-title,
-  .gallery__item-text,
-  .empty-library-watched {
+  .gallery__item-text {
     font-size: 20px;
     line-height: 1.2;
   }
+
+  .empty-library-watched {
+    margin-bottom: 20px;
+    font-size: 40px;
+    line-height: 1.2;
+}
 
   .gallery__item-rating {
     width: 40px;
