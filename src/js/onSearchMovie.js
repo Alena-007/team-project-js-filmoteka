@@ -39,9 +39,11 @@ export function searchMovie() {
                 position: 'left-top',
               }
             );
+            inputEl.value = '';
           } else if (data?.results.length < perPage) {
             movieGallery.innerHTML = '';
             renderMovieGallery(data.results);
+            inputEl.value = '';
             loadMoreBtn.style.display = 'none';
             Notify.success(
               `Hooray! We found ${data.total_results} movies for you! Enjoy watching the movie.`,
@@ -74,6 +76,7 @@ export function searchMovie() {
           position: 'left-top',
         }
       );
+      inputEl.value = '';
     }
   }
 }

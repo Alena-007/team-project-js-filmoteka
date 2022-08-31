@@ -115,12 +115,14 @@ body.dark-theme {
     color: rgb(104, 32, 16);
   }
 
-  & .modal {
-    background-color: rgb(205, 190, 187);
-  }
-
   & .modal-button {
     border-color: transparent;
+  }
+  & .modal {
+    background-color: rgb(205, 190, 187);
+    -webkit-box-shadow: 0px 4px 76px 11px rgba(104, 32, 16, 0.67);
+    -moz-box-shadow: 0px 4px 76px 11px rgba(104, 32, 16, 0.67);
+    box-shadow: 0px 4px 76px 11px rgba(104, 32, 16, 0.67);
   }
 
   & .footer {
@@ -133,6 +135,15 @@ body.dark-theme {
     :focus {
       color: #ff6b01;
     }
+    & .team__modal {
+    background-color: rgb(205, 190, 187);
+    -webkit-box-shadow: 0px 4px 76px 11px rgba(104, 32, 16, 0.67);
+    -moz-box-shadow: 0px 4px 76px 11px rgba(104, 32, 16, 0.67);
+    box-shadow: 0px 4px 76px 11px rgba(104, 32, 16, 0.67);
+  }
+  & .team__card {
+    background-color: #EEE3E3;
+  }
   }
 
   .footer__description {
