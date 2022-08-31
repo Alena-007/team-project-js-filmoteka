@@ -63,14 +63,20 @@ body.dark-theme {
     -moz-box-shadow: 0px 4px 76px 11px rgba(104, 32, 16, 0.67);
     box-shadow: 0px 4px 76px 11px rgba(104, 32, 16, 0.67);
   }
+
   & .gallery__image {
     width: 100%;
     border-radius: 5px 5px 0px 0px;
   }
 
+  & .gallery__item-info {
+    padding: 0px 5px 10px 7px;
+  }
+
   & .gallery__item-title {
     color: rgba(24, 121, 128, 0.924);
   }
+
   & .gallery__item-text {
     color: rgb(104, 32, 16);
   }
