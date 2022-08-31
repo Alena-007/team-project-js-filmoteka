@@ -7,7 +7,7 @@ function emptyWatched() {
     galleryWatched.insertAdjacentHTML(
       'beforeend',
       `<div>
-         <b class="empty-library-watched">OOOPPPSSS!!!</b>
+      <b class="empty-library-watched">OOOPPPSSS!!! NO MOVIE</b>
          <img class="empty-library-watched__image" src="https://i.kym-cdn.com/photos/images/original/000/954/924/bd1.jpg" alt="We Have a cookies"></img>
         </div>`
     );
@@ -20,7 +20,7 @@ function emptyQueue() {
     galleryQueue.insertAdjacentHTML(
       'beforeend',
       `<div>
-        <b class="empty-library-watched">OOOPPPSSS!!!</b>
+      <b class="empty-library-watched">OOOPPPSSS!!! NO MOVIE</b>
         <img class="empty-library-watched__image" src="https://i.kym-cdn.com/photos/images/original/000/954/924/bd1.jpg" alt="We Have a cookies"></img>
        </div>`
     );
