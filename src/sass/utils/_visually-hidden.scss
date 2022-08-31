@@ -30,7 +30,9 @@
   background-color: #ff6b01;
   color: #ffffff;
 }
-
+.load-more.is-hidden {
+  position: absolute;
+}
 .load-more:hover {
   cursor: pointer;
   transform: scale(1.1);
