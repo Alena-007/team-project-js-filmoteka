@@ -7,14 +7,13 @@ import { Notify } from 'notiflix';
 const formEl = document.querySelector('.search-form');
 const inputEl = document.querySelector('input');
 const tuiPopularEl = document.querySelector('.pagin-popular');
+const loadMoreBtn = document.querySelector('.load-more');
+
 let query = '';
 let page = 1;
-
+let perPage = 20;
 
 export function searchMovie() {
-  const loadMoreBtn = document.querySelector('.load-more');
-loadMoreBtn.addEventListener('click', onLoadMore);
-loadMoreBtn.classList.add('is-hidden');
   formEl.addEventListener('submit', onSearchMovie);
 
   function onSearchMovie(e) {
@@ -29,9 +28,21 @@ loadMoreBtn.classList.add('is-hidden');
       getSearchMovies(query, page)
         .then(data => {
           hideLoader();
-          if (data.results.length === 0) {
+          loadMoreBtn.style.display = 'none';
+          if (data?.results.length === 0) {
             Notify.failure(
               'Sorry, there are no movies matching your search query. Please try again.',
+              {
+                timeout: 4000,
+                position: 'left-top',
+              }
+            );
+          } else if (data?.results.length < perPage) {
+            movieGallery.innerHTML = '';
+            renderMovieGallery(data.results);
+            loadMoreBtn.style.display = 'none';
+            Notify.success(
+              `Hooray! We found ${data.total_results} movies for you! Enjoy watching the movie.`,
               {
                 timeout: 4000,
                 position: 'left-top',
@@ -40,7 +51,7 @@ loadMoreBtn.classList.add('is-hidden');
           } else {
             movieGallery.innerHTML = '';
             renderMovieGallery(data.results);
-            loadMoreBtn.classList.remove('is-hidden');
+            loadMoreBtn.style.display = 'grid';
             inputEl.value = '';
             Notify.success(
               `Hooray! We found ${data.total_results} movies for you! Enjoy watching the movie.`,
@@ -69,11 +80,19 @@ export function onLoadMore() {
   page += 1;
   getSearchMovies(query, page)
     .then(data => {
-      console.log(data.total_results);
-      console.log(data.results.length);
-      if (page >= data.total_pages) {
-        loadMoreBtn.classList.add('is-hidden');
+      if (data.results.length < perPage) {
+        renderMovieGallery(data.results);
+        loadMoreBtn.style.display = 'none';
+        Notify.info(
+          "We're sorry, but you've reached the end of search results.",
+          {
+            timeout: 4000,
+            position: 'left-top',
+          }
+        );
       } else renderMovieGallery(data.results);
     })
     .catch(error => console.log(error));
 }
+
+loadMoreBtn.addEventListener('click', onLoadMore);
