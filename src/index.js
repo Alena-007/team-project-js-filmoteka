@@ -1,11 +1,11 @@
 import { getPopularMovies } from './js/getFetch';
 import { getSearchMovies } from './js/getFetch';
 import { getMovieById } from './js/getFetch';
-import { showPopularMovieGallery } from './js/showPopularMovieGallery';
+
 import { movieGallery } from './js/renderMovieGallery';
 import upButton from './js/upbutton';
 import { searchMovie } from './js/onSearchMovie';
-import { getPaginationPopular } from './js/pagination';
+import { getPopolar } from './js/pagination';
 // import {showRenderGallery} from './js/renderMovieGallery'
 // import { onOpenModal } from './js/modal';
 // import { onCloseModal } from './js/modal';
@@ -28,10 +28,9 @@ import { onLoadMore } from './js/onSearchMovie';
 const currentPage = document.querySelector('.current');
 
 if (currentPage.classList.contains('home')) {
-  showPopularMovieGallery(1);
+  getPopolar();
   modalId(gallery);
   searchMovie();
-  getPaginationPopular();
 } else {
   modalId(galleryLibWatched);
   modalId(galleryLibQueue);
