@@ -7,7 +7,7 @@ import { Notify } from 'notiflix';
 const formEl = document.querySelector('.search-form');
 const inputEl = document.querySelector('input');
 const tuiPopularEl = document.querySelector('.pagin-popular');
-const loadMoreBtn = document.querySelector('.load-more');
+let loadMoreBtn = null;
 
 let query = '';
 let page = 1;
@@ -15,7 +15,9 @@ let perPage = 20;
 
 export function searchMovie() {
   formEl.addEventListener('submit', onSearchMovie);
-
+  loadMoreBtn = document.querySelector('.load-more');
+  loadMoreBtn.addEventListener('click', onLoadMore);
+  loadMoreBtn = document.querySelector('.load-more');
   function onSearchMovie(e) {
     e.preventDefault();
     showLoader();
@@ -77,6 +79,7 @@ export function searchMovie() {
 }
 
 export function onLoadMore() {
+   loadMoreBtn = document.querySelector('.load-more');
   page += 1;
   getSearchMovies(query, page)
     .then(data => {
@@ -95,4 +98,4 @@ export function onLoadMore() {
     .catch(error => console.log(error));
 }
 
-loadMoreBtn.addEventListener('click', onLoadMore);
+
