@@ -5,7 +5,7 @@ import { getMovieById } from './js/getFetch';
 import { movieGallery } from './js/renderMovieGallery';
 import upButton from './js/upbutton';
 import { searchMovie } from './js/onSearchMovie';
-import { getPopolar } from './js/pagination';
+import { getPagination} from './js/pagination';
 // import {showRenderGallery} from './js/renderMovieGallery'
 // import { onOpenModal } from './js/modal';
 // import { onCloseModal } from './js/modal';
@@ -24,11 +24,12 @@ import { teamModal } from './js/team';
 import { btnFilterLib } from './js/btn_filterLIbrary';
 import changetheme from './js/changetheme'
 import { onLoadMore } from './js/onSearchMovie';
-
+import { showPopularMovieGallery } from './js/showPopularMovieGallery';
 const currentPage = document.querySelector('.current');
 
 if (currentPage.classList.contains('home')) {
-  getPopolar();
+  showPopularMovieGallery(1);
+  getPagination();
   modalId(gallery);
   searchMovie();
 } else {
