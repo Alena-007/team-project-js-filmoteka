@@ -186,12 +186,6 @@
   display: flex;
 }
 
-.btn-disabled {
-  background-color: var(--accent-color);
-  color: var(--add-textcolor);
-  text-transform: uppercase;
-  border-color: #ffffff;
- }
 .modal-button,
 .btn-watched,
 .btn-queue {
@@ -225,7 +219,12 @@
   transform: scale(1.1);
 }
 
-
+.btn-disabled {
+  background-color: var(--accent-color);
+  color: var(--add-textcolor);
+  text-transform: uppercase;
+  border-color: #ffffff;
+ }
 
 /* max 767px */
 
