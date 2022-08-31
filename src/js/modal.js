@@ -49,16 +49,16 @@ async function fetchById(id) {
     renderMovieModal(movieIdF);
     btnQueue = document.querySelector('.modal-add-queue-button');
     btnWatch = document.querySelector('.modal-add-watched-button');
+     btnQueue.addEventListener('click', addToQueue);
     btnWatch.addEventListener('click', addToWatchedLoc);
-    btnQueue.addEventListener('click', addToQueue);
     if (arrW.includes(keyW)) {
       btnWatch.classList.add('btn-disabled');
       btnWatch.innerHTML = 'remove from watched';
-    }
+    } 
     if (arrQ.includes(keyQ)) {
       btnQueue.classList.add('btn-disabled');
       btnQueue.innerHTML = 'remove from queue';
-  }
+    } 
   } catch (error) {
 
     console.error('error');
@@ -115,28 +115,31 @@ function modalClosinByBackdrop(e) {
 
 function addToWatchedLoc() {
   btnWatch.classList.toggle('btn-disabled');
-  getMovieById(movieId).then(info => {
-    localStorage.setItem(`choiseMovieWatched ${movieId}`, JSON.stringify(info));
-  });
   if (btnWatch.classList.contains('btn-disabled')) {
+     getMovieById(movieId).then(info => {
+    localStorage.setItem(`choiseMovieWatched ${movieId}`, JSON.stringify(info));
+     });
     btnWatch.innerHTML = 'remove from watch';
   } else {
+btnWatch.classList.remove('btn-disabled');
     btnWatch.innerHTML = 'ADD TO WATCH';
   }
+    
 }
-
-function addToQueue() {
-  btnQueue.classList.toggle('btn-disabled');
-  getMovieById(movieId).then(info => {
-    localStorage.setItem(`choiseMovieQueue ${movieId}`, JSON.stringify(info));
-  });
-  if (btnQueue.classList.contains('btn-disabled')) {
-    btnQueue.innerHTML = 'remove from queue';
-  } else {
-btnQueue.innerHTML = 'ADD TO WATCH';
-  }
-} 
   
+  function addToQueue() {
+    btnQueue.classList.toggle('btn-disabled');
+    if (btnQueue.classList.contains('btn-disabled')) {
+      getMovieById(movieId).then(info => {
+        localStorage.setItem(`choiseMovieQueue ${movieId}`, JSON.stringify(info));
+      });
+      btnQueue.innerHTML = 'remove from queue';
+    } else {
+      btnQueue.classList.remove('btn-disabled');
+    btnQueue.innerHTML = 'ADD TO QUEUE';
+    }
+  }
+
 function checkRemove() {
   if(!btnWatch.classList.contains('btn-disabled')) {
     btnWatch.innerHTML = 'ADD TO WATCHED';
