@@ -15,7 +15,6 @@ checkTheme();
 
 function onChangeTheme(e) {
     e.preventDefault()
-    console.log("hello")
     if (bodyTheme.classList.contains('dark-theme') || bodyTheme.classList.contains('')) {
         localStorage.setItem('theme', 'light');
         iconTheme.classList.remove('dark-theme-icon')
