@@ -2,7 +2,8 @@
   visibility: hidden;
 }
 .teamdrop {
-  position: absolute;
+  position: fixed;
+  overflow: hidden;
   top: 0;
   left: 0;
   width: 100vw;
@@ -123,7 +124,7 @@
 @media screen and (min-width: 1279px) {
   .team__card {
     width: 126px;
-    height: 166px;
+    height: 185px;
   }
 }
 .team__title {
@@ -179,4 +180,63 @@
   line-height: 16px;
   text-align: center;
   color: #8c8c8c;
+}
+// github link
+.team__card
+.github__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.github__wrapper {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  color: #000000;
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+  background: var(--accent-color);
+  transition: 1s;
+}
+@media screen and (max-width: 1279px) {
+  .github__wrapper {
+    visibility: hidden;
+  }
+}
+
+.github__wrapper a {
+  width: 0px;
+  overflow: hidden;
+  transition: 1s;
+  text-align: center;
+}
+
+.github__wrapper:hover {
+  width: 105px;
+  border-radius: 5px;
+  background: var(--accent-color);
+}
+
+.github__wrapper:hover a {
+  padding: 2px;
+  width: max-content;
+}
+
+.github__link {
+  margin-top: 10px;
+  font-weight: 500;
+  font-family: var(--primary-font-family);
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-decoration: none;
+  color: #000000;
+}
+
+.github__icon {
+  fill: #000000;
 }
