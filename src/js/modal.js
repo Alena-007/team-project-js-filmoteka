@@ -107,8 +107,9 @@ function modalClosinByEsc(event) {
 
 function modalClosinByBackdrop(e) {
     e.preventDefault();
-    document.body.style.overflow = '';
+    
     if (e.target.className === 'backdrop') {
+      document.body.style.overflow = '';
         modalClosing();
   }
 }
@@ -164,7 +165,7 @@ function renderMovieInfo({ poster_path, title, vote_average, vote_count, popular
   }
   const genreInfo = listGenreNames.join(', ');
   return `<div class="modal-card">
-            <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}poster" class="modal-card-poster" />
+            <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}poster" class="modal-card-poster" onerror="this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm-UsZrhxFJebEgrmhqJIn7H4MhU6LAeqY9T0JLAVYpdcGcy4MfZBDM664hJS0GLmuC8A&usqp=CAU';"/>
 
             <div class="modal-movie-info-part">
               <h2 class="modal-movie-title" data-id=${id}>${title}</h2>
